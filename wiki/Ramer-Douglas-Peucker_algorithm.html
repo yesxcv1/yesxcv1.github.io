@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Ramer–Douglas–Peucker algorithm - Wikipedia</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"X-gXjgpAAEQAAFzJLh8AAADB","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Ramer–Douglas–Peucker_algorithm","wgTitle":"Ramer–Douglas–Peucker algorithm","wgCurRevisionId":991615121,"wgRevisionId":991615121,"wgArticleId":18116059,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Articles with example pseudocode","Computer graphics algorithms","Geometric algorithms","Digital signal processing"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Ramer–Douglas–Peucker_algorithm","wgRelevantArticleId":
+18116059,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRedirectedFrom":"Ramer-Douglas-Peucker_algorithm","wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgPopupsReferencePreviews":!1,"wgPopupsConflictsWithNavPopupGadget":!1,"wgPopupsConflictsWithRefTooltipsGadget":!0,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":!0,"nearby":!0,"watchlist":!0,"tagline":!1},"wgWMESchemaEditAttemptStepOversample":!1,"wgULSCurrentAutonym":"English","wgNoticeProject":"wikipedia","wgInternalRedirectTargetUrl":"/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm","wgCentralAuthMobileDomain":!1,"wgEditSubmitButtonLabelPublish":!0,"wgULSPosition":"interlanguage","wgWikibaseItemId":"Q1251950"};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready",
+"ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","ext.math.styles":"ready","skins.vector.styles.legacy":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["mediawiki.action.view.redirect","ext.cite.ux-enhancements","ext.math.scripts","site","mediawiki.page.ready","mediawiki.toc","skins.vector.legacy.js","ext.gadget.ReferenceTooltips","ext.gadget.charinsert","ext.gadget.extra-toolbar-buttons","ext.gadget.refToolbar","ext.gadget.switcher","ext.centralauth.centralautologin","mmv.head","mmv.bootstrap.autostart","ext.popups","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.compactlinks","ext.uls.interface","ext.cx.eventlogging.campaigns","ext.centralNotice.geoIP","ext.centralNotice.startUp"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.math.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cskins.vector.styles.legacy%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.36.0-wmf.25"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<link rel="preconnect" href="//upload.wikimedia.org"/>
+<link rel="alternate" media="only screen and (max-width: 720px)" href="//en.m.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit"/>
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="license" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Ramer–Douglas–Peucker_algorithm rootpage-Ramer–Douglas–Peucker_algorithm skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
+	<div class="mw-indicators mw-body-content">
+	</div>
+	<h1 id="firstHeading" class="firstHeading" lang="en">Ramer–Douglas–Peucker algorithm</h1>
+	<div id="bodyContent" class="mw-body-content">
+		<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+		<div id="contentSub"><span class="mw-redirectedfrom">&#160;&#160;(Redirected from <a href="/w/index.php?title=Ramer-Douglas-Peucker_algorithm&amp;redirect=no" class="mw-redirect" title="Ramer-Douglas-Peucker algorithm">Ramer-Douglas-Peucker algorithm</a>)</span></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#searchInput">Jump to search</a>
+		<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><p>The <b>Ramer–Douglas–Peucker algorithm</b>, also known as the <b>Douglas–Peucker algorithm</b> and <b>iterative end-point fit algorithm</b>, is an algorithm that <a href="/wiki/Decimation_(signal_processing)" class="mw-redirect" title="Decimation (signal processing)">decimates</a> a curve composed of line segments to a similar curve with fewer points. It was one of the earliest successful algorithms developed for <a href="/wiki/Cartographic_generalization" title="Cartographic generalization">cartographic generalization</a>.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Idea"><span class="tocnumber">1</span> <span class="toctext">Idea</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Algorithm"><span class="tocnumber">2</span> <span class="toctext">Algorithm</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Non-parametric_Ramer–Douglas–Peucker"><span class="tocnumber">2.1</span> <span class="toctext">Non-parametric Ramer–Douglas–Peucker</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Pseudocode"><span class="tocnumber">2.2</span> <span class="toctext">Pseudocode</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Application"><span class="tocnumber">3</span> <span class="toctext">Application</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Complexity"><span class="tocnumber">4</span> <span class="toctext">Complexity</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Similar_algorithms"><span class="tocnumber">5</span> <span class="toctext">Similar algorithms</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Further_reading"><span class="tocnumber">7</span> <span class="toctext">Further reading</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#References"><span class="tocnumber">8</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#External_links"><span class="tocnumber">9</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Idea">Idea</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=1" title="Edit section: Idea">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The purpose of the algorithm is, given a <a href="/wiki/Polygonal_chain" title="Polygonal chain">curve composed of line segments</a> (which is also called a <i>Polyline</i> in some contexts), to find a similar curve with fewer points.  The algorithm defines 'dissimilar' based on the maximum distance between the original curve and the simplified curve (i.e., the <a href="/wiki/Hausdorff_distance" title="Hausdorff distance">Hausdorff distance</a> between the curves).  The simplified curve consists of a subset of the points that defined the original curve.
+</p>
+<h2><span class="mw-headline" id="Algorithm">Algorithm</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=2" title="Edit section: Algorithm">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:222px;"><a href="/wiki/File:Douglas-Peucker_animated.gif" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/30/Douglas-Peucker_animated.gif/220px-Douglas-Peucker_animated.gif" decoding="async" width="220" height="70" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/30/Douglas-Peucker_animated.gif/330px-Douglas-Peucker_animated.gif 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/30/Douglas-Peucker_animated.gif/440px-Douglas-Peucker_animated.gif 2x" data-file-width="472" data-file-height="150" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Douglas-Peucker_animated.gif" class="internal" title="Enlarge"></a></div>Simplifying a piecewise linear curve with the Douglas–Peucker algorithm.</div></div></div>
+<p>The starting curve is an ordered set of points or lines and the distance dimension <i>&#949;</i>&#160;&gt;&#160;0.
+</p><p>The algorithm <a href="/wiki/Recursion" title="Recursion">recursively</a> divides the line.  Initially it is given all the points between the first and last point.  It automatically marks the first and last point to be kept.  It then finds the point that is farthest from the line segment with the first and last points as end points; this point is obviously farthest on the curve from the approximating line segment between the end points. If the point is closer than <i>&#949;</i> to the line segment, then any points not currently marked to be kept can be discarded without the simplified curve being worse than <i>&#949;</i>.
+</p><p>If the point farthest from the line segment is greater than <i>&#949;</i> from the approximation then that point must be kept.  The algorithm recursively calls itself with the first point and the farthest point and then with the farthest point and the last point, which includes the farthest point being marked as kept.
+</p><p>When the recursion is completed a new output curve can be generated consisting of all and only those points that have been marked as kept.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:222px;"><a href="/wiki/File:RDP,_varying_epsilon.gif" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/69/RDP%2C_varying_epsilon.gif/220px-RDP%2C_varying_epsilon.gif" decoding="async" width="220" height="77" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/69/RDP%2C_varying_epsilon.gif/330px-RDP%2C_varying_epsilon.gif 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/69/RDP%2C_varying_epsilon.gif/440px-RDP%2C_varying_epsilon.gif 2x" data-file-width="1024" data-file-height="360" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:RDP,_varying_epsilon.gif" class="internal" title="Enlarge"></a></div>The effect of varying epsilon in a parametric implementation of RDP</div></div></div>
+<h3><span id="Non-parametric_Ramer.E2.80.93Douglas.E2.80.93Peucker"></span><span class="mw-headline" id="Non-parametric_Ramer–Douglas–Peucker">Non-parametric Ramer–Douglas–Peucker</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=3" title="Edit section: Non-parametric Ramer–Douglas–Peucker">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The choice of <i>&#949;</i> is usually user-defined. Like most line fitting / polygonal approximation / dominant point detection methods, it can be made non-parametric by using the error bound due to digitization / quantization as a termination condition.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup>
+</p>
+<h3><span class="mw-headline" id="Pseudocode">Pseudocode</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=4" title="Edit section: Pseudocode">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>(Assumes the input is a one-based array)
+</p>
+<pre><b>function</b> DouglasPeucker(PointList[], epsilon)
+    // Find the point with the maximum distance
+    dmax = 0
+    index = 0
+    end = length(PointList)
+    <b>for</b> i = 2 to (end - 1) {
+        d = perpendicularDistance(PointList[i], Line(PointList[1], PointList[end])) 
+        <b>if</b> (d &gt; dmax) {
+            index = i
+            dmax = d
+        }
+    }
+    
+    ResultList[] = empty;
+    
+    // If max distance is greater than epsilon, recursively simplify
+    <b>if</b> (dmax &gt; epsilon) {
+        // Recursive call
+        recResults1[] = DouglasPeucker(PointList[1...index], epsilon)
+        recResults2[] = DouglasPeucker(PointList[index...end], epsilon)
+
+        // Build the result list
+        ResultList[] = {recResults1[1...length(recResults1) - 1], recResults2[1...length(recResults2)]}
+    } <b>else</b> {
+        ResultList[] = {PointList[1], PointList[end]}
+    }
+    // Return the result
+    <b>return</b> ResultList[]
+<b>end</b>
+</pre>
+<p>Link: <a rel="nofollow" class="external free" href="https://karthaus.nl/rdp/">https://karthaus.nl/rdp/</a>
+</p>
+<h2><span class="mw-headline" id="Application">Application</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=5" title="Edit section: Application">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The algorithm is used for the processing of <a href="/wiki/Vector_graphics" title="Vector graphics">vector graphics</a> and <a href="/wiki/Cartographic_generalization" title="Cartographic generalization">cartographic generalization</a>.  It does not always preserve the property of non-self-intersection for curves which has led to the development of variant algorithms.<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p><p>The algorithm is widely used in robotics<sup id="cite_ref-3" class="reference"><a href="#cite_note-3">&#91;3&#93;</a></sup> to perform simplification and denoising of range data acquired by a rotating <a href="/wiki/Laser_rangefinder" title="Laser rangefinder">range scanner</a>; in this field it is known as the split-and-merge algorithm and is attributed to <a href="/wiki/Richard_O._Duda" title="Richard O. Duda">Duda</a> and <a href="/wiki/Peter_E._Hart" title="Peter E. Hart">Hart</a>.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup>
+</p>
+<h2><span class="mw-headline" id="Complexity">Complexity</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=6" title="Edit section: Complexity">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The running time of this algorithm when run on a polyline consisting of <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle n-1}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>n</mi>
+        <mo>&#x2212;<!-- − --></mo>
+        <mn>1</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle n-1}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/fbd0b0f32b28f51962943ee9ede4fb34198a2521" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.505ex; width:5.398ex; height:2.343ex;" alt="n-1"/></span> segments and <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle n}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>n</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle n}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.395ex; height:1.676ex;" alt="n"/></span> vertices is given by the recurrence <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle T(n)=T(i+1)+T(n-i)+O(n)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>T</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mi>T</mi>
+        <mo stretchy="false">(</mo>
+        <mi>i</mi>
+        <mo>+</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mi>T</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <mo>&#x2212;<!-- − --></mo>
+        <mi>i</mi>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle T(n)=T(i+1)+T(n-i)+O(n)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d30c4132e75461468a13b8aa39a1e315c416ff68" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:35.331ex; height:2.843ex;" alt="{\displaystyle T(n)=T(i+1)+T(n-i)+O(n)}"/></span> where <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle i\in \{1,\ldots ,n-2\}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>i</mi>
+        <mo>&#x2208;<!-- ∈ --></mo>
+        <mo fence="false" stretchy="false">{</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mo>&#x2026;<!-- … --></mo>
+        <mo>,</mo>
+        <mi>n</mi>
+        <mo>&#x2212;<!-- − --></mo>
+        <mn>2</mn>
+        <mo fence="false" stretchy="false">}</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle i\in \{1,\ldots ,n-2\}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/eef5a4456b501e4e6645eff850a6430232cbaa5d" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:17.706ex; height:2.843ex;" alt="{\displaystyle i\in \{1,\ldots ,n-2\}}"/></span> is the value of <i>index</i> in the pseudocode.  In the worst case, <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle i=1}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>i</mi>
+        <mo>=</mo>
+        <mn>1</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle i=1}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9fb857369fbc28dab4b5d76bb835e6f196b1d1cf" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:5.063ex; height:2.176ex;" alt="i=1"/></span> or <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle i=n-2}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>i</mi>
+        <mo>=</mo>
+        <mi>n</mi>
+        <mo>&#x2212;<!-- − --></mo>
+        <mn>2</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle i=n-2}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1248cb10e4df0e5844e28436012ea5b7a47fffad" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.505ex; width:9.298ex; height:2.343ex;" alt="{\displaystyle i=n-2}"/></span> at each recursive invocation and this algorithm has a running time of <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \Theta (n^{2})}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#x0398;<!-- Θ --></mi>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>n</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msup>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Theta (n^{2})}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/215877752c4f392a7276328d4d37709bf7c3f55d" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.066ex; height:3.176ex;" alt="\Theta (n^{2})"/></span>.  In the best case <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle i=\lfloor n/2\rfloor }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>i</mi>
+        <mo>=</mo>
+        <mo fence="false" stretchy="false">&#x230A;<!-- ⌊ --></mo>
+        <mi>n</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo>/</mo>
+        </mrow>
+        <mn>2</mn>
+        <mo fence="false" stretchy="false">&#x230B;<!-- ⌋ --></mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle i=\lfloor n/2\rfloor }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/02656f31473528c2957da389d1828c619ab13e7e" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:9.685ex; height:2.843ex;" alt="{\displaystyle i=\lfloor n/2\rfloor }"/></span> or  <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle i=\lceil n/2\rceil }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>i</mi>
+        <mo>=</mo>
+        <mo fence="false" stretchy="false">&#x2308;<!-- ⌈ --></mo>
+        <mi>n</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo>/</mo>
+        </mrow>
+        <mn>2</mn>
+        <mo fence="false" stretchy="false">&#x2309;<!-- ⌉ --></mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle i=\lceil n/2\rceil }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f1e0ac32e65660eafcbf3d06a61c7fe73ae4bb3a" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:9.685ex; height:2.843ex;" alt="{\displaystyle i=\lceil n/2\rceil }"/></span> at each recursive invocation in which case the running time has the well-known solution (via the <a href="/wiki/Master_theorem_(analysis_of_algorithms)" title="Master theorem (analysis of algorithms)">master theorem for divide-and-conquer recurrences</a>) of <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle O(n\log n)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <mi>log</mi>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle O(n\log n)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9d2320768fb54880ca4356e61f60eb02a3f9d9f1" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:10.118ex; height:2.843ex;" alt="O(n\log n)"/></span>.
+</p><p>Using (fully- or semi-)<a href="/wiki/Dynamic_convex_hull" title="Dynamic convex hull">Dynamic convex hull</a> data structures, the simplification performed by the algorithm can be accomplished in <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle O(n\log n)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>O</mi>
+        <mo stretchy="false">(</mo>
+        <mi>n</mi>
+        <mi>log</mi>
+        <mo>&#x2061;<!-- ⁡ --></mo>
+        <mi>n</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle O(n\log n)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9d2320768fb54880ca4356e61f60eb02a3f9d9f1" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:10.118ex; height:2.843ex;" alt="O(n\log n)"/></span> time.<sup id="cite_ref-5" class="reference"><a href="#cite_note-5">&#91;5&#93;</a></sup>
+</p>
+<h2><span class="mw-headline" id="Similar_algorithms">Similar algorithms</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=7" title="Edit section: Similar algorithms">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Alternative algorithms for line simplification include:
+</p>
+<ul><li><a href="/wiki/Visvalingam%E2%80%93Whyatt_algorithm" title="Visvalingam–Whyatt algorithm">Visvalingam–Whyatt</a></li>
+<li><a href="/w/index.php?title=Reumann%E2%80%93Witkam_algorithm&amp;action=edit&amp;redlink=1" class="new" title="Reumann–Witkam algorithm (page does not exist)">Reumann–Witkam</a></li>
+<li><a href="/w/index.php?title=Opheim_simplification_algorithm&amp;action=edit&amp;redlink=1" class="new" title="Opheim simplification algorithm (page does not exist)">Opheim simplification</a></li>
+<li><a href="/w/index.php?title=Lang_simplification_algorithm&amp;action=edit&amp;redlink=1" class="new" title="Lang simplification algorithm (page does not exist)">Lang simplification</a></li>
+<li><a href="/w/index.php?title=Zhao_Saalfeld_algorithm&amp;action=edit&amp;redlink=1" class="new" title="Zhao Saalfeld algorithm (page does not exist)">Zhao-Saalfeld</a></li></ul>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=8" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a href="/wiki/Curve_fitting" title="Curve fitting">Curve fitting</a></li></ul>
+<h2><span class="mw-headline" id="Further_reading">Further reading</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=9" title="Edit section: Further reading">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li>Urs Ramer, "An iterative procedure for the polygonal approximation of plane curves", Computer Graphics and Image Processing, 1(3), 244–256 (1972) <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1016%2FS0146-664X%2872%2980017-0">10.1016/S0146-664X(72)80017-0</a></li>
+<li>David Douglas &amp; Thomas Peucker, "Algorithms for the reduction of the number of points required to represent a digitized line or its caricature", The Canadian Cartographer 10(2), 112–122 (1973) <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.3138%2FFM57-6770-U75U-7727">10.3138/FM57-6770-U75U-7727</a></li>
+<li>John Hershberger &amp; Jack Snoeyink, "Speeding Up the Douglas–Peucker Line-Simplification Algorithm", Proc 5th Symp on Data Handling, 134–143 (1992). UBC Tech Report TR-92-07 available at <a rel="nofollow" class="external free" href="http://www.cs.ubc.ca/cgi-bin/tr/1992/TR-92-07">http://www.cs.ubc.ca/cgi-bin/tr/1992/TR-92-07</a></li>
+<li>R.O. Duda and P.E. Hart, "Pattern classification and scene analysis", (1973), Wiley, New York (<a rel="nofollow" class="external free" href="https://web.archive.org/web/20110715184521/http://rii.ricoh.com/~stork/DHS.html">https://web.archive.org/web/20110715184521/http://rii.ricoh.com/~stork/DHS.html</a>)</li>
+<li><cite id="CITEREFVisvalingamWhyatt1992" class="citation techreport cs1">Visvalingam, M; Whyatt, JD (1992). <a rel="nofollow" class="external text" href="https://hydra.hull.ac.uk/assets/hull:8338/content"><i>Line Generalisation by Repeated Elimination of the Smallest Area</i></a> (Technical report). Discussion Paper. Cartographic Information Systems Research Group (CISRG), The University of Hull. 10.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=report&amp;rft.btitle=Line+Generalisation+by+Repeated+Elimination+of+the+Smallest+Area&amp;rft.series=Discussion+Paper&amp;rft.pub=Cartographic+Information+Systems+Research+Group+%28CISRG%29%2C+The+University+of+Hull&amp;rft.date=1992&amp;rft.aulast=Visvalingam&amp;rft.aufirst=M&amp;rft.au=Whyatt%2C+JD&amp;rft_id=https%3A%2F%2Fhydra.hull.ac.uk%2Fassets%2Fhull%3A8338%2Fcontent&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ARamer%E2%80%93Douglas%E2%80%93Peucker+algorithm" class="Z3988"></span><style data-mw-deduplicate="TemplateStyles:r982806391">.mw-parser-output cite.citation{font-style:inherit}.mw-parser-output .citation q{quotes:"\"""\"""'""'"}.mw-parser-output .id-lock-free a,.mw-parser-output .citation .cs1-lock-free a{background:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited a,.mw-parser-output .id-lock-registration a,.mw-parser-output .citation .cs1-lock-limited a,.mw-parser-output .citation .cs1-lock-registration a{background:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription a,.mw-parser-output .citation .cs1-lock-subscription a{background:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-subscription,.mw-parser-output .cs1-registration{color:#555}.mw-parser-output .cs1-subscription span,.mw-parser-output .cs1-registration span{border-bottom:1px dotted;cursor:help}.mw-parser-output .cs1-ws-icon a{background:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg")right 0.1em center/12px no-repeat}.mw-parser-output code.cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;font-size:100%}.mw-parser-output .cs1-visible-error{font-size:100%}.mw-parser-output .cs1-maint{display:none;color:#33aa33;margin-left:0.3em}.mw-parser-output .cs1-subscription,.mw-parser-output .cs1-registration,.mw-parser-output .cs1-format{font-size:95%}.mw-parser-output .cs1-kern-left,.mw-parser-output .cs1-kern-wl-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right,.mw-parser-output .cs1-kern-wl-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}</style></li></ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=10" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="reflist" style="list-style-type: decimal;">
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-1">^</a></b></span> <span class="reference-text"><cite id="CITEREFPrasadLeungQuekCho2012" class="citation journal cs1">Prasad, Dilip K.; Leung, Maylor K.H.; Quek, Chai; Cho, Siu-Yeung (2012). "A novel framework for making dominant point detection methods non-parametric". <i>Image and Vision Computing</i>. <b>30</b> (11): 843–859. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1016%2Fj.imavis.2012.06.010">10.1016/j.imavis.2012.06.010</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Image+and+Vision+Computing&amp;rft.atitle=A+novel+framework+for+making+dominant+point+detection+methods+non-parametric&amp;rft.volume=30&amp;rft.issue=11&amp;rft.pages=843-859&amp;rft.date=2012&amp;rft_id=info%3Adoi%2F10.1016%2Fj.imavis.2012.06.010&amp;rft.aulast=Prasad&amp;rft.aufirst=Dilip+K.&amp;rft.au=Leung%2C+Maylor+K.H.&amp;rft.au=Quek%2C+Chai&amp;rft.au=Cho%2C+Siu-Yeung&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ARamer%E2%80%93Douglas%E2%80%93Peucker+algorithm" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r982806391"/></span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><cite id="CITEREFWuMarquez2003" class="citation book cs1">Wu, Shin-Ting; Marquez, Mercedes (2003). "A non-self-intersection Douglas-Peucker algorithm". <i>16th Brazilian Symposium on Computer Graphics and Image Processing (SIBGRAPI 2003)</i>. Sao Carlos, Brazil: IEEE. pp.&#160;60–66. <a href="/wiki/CiteSeerX_(identifier)" class="mw-redirect" title="CiteSeerX (identifier)">CiteSeerX</a>&#160;<span class="cs1-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="//citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.73.5773">10.1.1.73.5773</a></span>. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1109%2FSIBGRA.2003.1240992">10.1109/SIBGRA.2003.1240992</a>. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-0-7695-2032-2" title="Special:BookSources/978-0-7695-2032-2"><bdi>978-0-7695-2032-2</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=A+non-self-intersection+Douglas-Peucker+algorithm&amp;rft.btitle=16th+Brazilian+Symposium+on+Computer+Graphics+and+Image+Processing+%28SIBGRAPI+2003%29&amp;rft.place=Sao+Carlos%2C+Brazil&amp;rft.pages=60-66&amp;rft.pub=IEEE&amp;rft.date=2003&amp;rft_id=%2F%2Fciteseerx.ist.psu.edu%2Fviewdoc%2Fsummary%3Fdoi%3D10.1.1.73.5773&amp;rft_id=info%3Adoi%2F10.1109%2FSIBGRA.2003.1240992&amp;rft.isbn=978-0-7695-2032-2&amp;rft.aulast=Wu&amp;rft.aufirst=Shin-Ting&amp;rft.au=Marquez%2C+Mercedes&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ARamer%E2%80%93Douglas%E2%80%93Peucker+algorithm" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r982806391"/></span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-3">^</a></b></span> <span class="reference-text"><cite id="CITEREFNguyenGächterMartinelliTomatis2007" class="citation conference cs1">Nguyen, Viet; Gächter, Stefan; Martinelli, Agostino; Tomatis, Nicola; Siegwart, Roland (2007). <a rel="nofollow" class="external text" href="http://doc.rero.ch/record/320492/files/10514_2007_Article_9034.pdf"><i>A comparison of line extraction algorithms using 2D range data for indoor mobile robotics</i></a> <span class="cs1-format">(PDF)</span>. <i>Autonomous Robots</i>. <b>23</b> (2). pp.&#160;97–111. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1007%2Fs10514-007-9034-y">10.1007/s10514-007-9034-y</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=conference&amp;rft.jtitle=Autonomous+Robots&amp;rft.atitle=A+comparison+of+line+extraction+algorithms+using+2D+range+data+for+indoor+mobile+robotics&amp;rft.volume=23&amp;rft.issue=2&amp;rft.pages=97-111&amp;rft.date=2007&amp;rft_id=info%3Adoi%2F10.1007%2Fs10514-007-9034-y&amp;rft.aulast=Nguyen&amp;rft.aufirst=Viet&amp;rft.au=G%C3%A4chter%2C+Stefan&amp;rft.au=Martinelli%2C+Agostino&amp;rft.au=Tomatis%2C+Nicola&amp;rft.au=Siegwart%2C+Roland&amp;rft_id=http%3A%2F%2Fdoc.rero.ch%2Frecord%2F320492%2Ffiles%2F10514_2007_Article_9034.pdf&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ARamer%E2%80%93Douglas%E2%80%93Peucker+algorithm" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r982806391"/></span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><b><a href="#cite_ref-4">^</a></b></span> <span class="reference-text"><cite id="CITEREFDudaHart1973" class="citation book cs1"><a href="/wiki/Richard_O._Duda" title="Richard O. Duda">Duda, Richard O.</a>; <a href="/wiki/Peter_E._Hart" title="Peter E. Hart">Hart, Peter E.</a> (1973). <span class="cs1-lock-registration" title="Free registration required"><a rel="nofollow" class="external text" href="https://archive.org/details/patternclassific0000duda"><i>Pattern classification and scene analysis</i></a></span>. New York: Wiley. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/0-471-22361-1" title="Special:BookSources/0-471-22361-1"><bdi>0-471-22361-1</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Pattern+classification+and+scene+analysis&amp;rft.place=New+York&amp;rft.pub=Wiley&amp;rft.date=1973&amp;rft.isbn=0-471-22361-1&amp;rft.aulast=Duda&amp;rft.aufirst=Richard+O.&amp;rft.au=Hart%2C+Peter+E.&amp;rft_id=https%3A%2F%2Farchive.org%2Fdetails%2Fpatternclassific0000duda&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ARamer%E2%80%93Douglas%E2%80%93Peucker+algorithm" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r982806391"/></span>
+</li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-5">^</a></b></span> <span class="reference-text"><cite id="CITEREFHershbergerSnoeyink1992" class="citation techreport cs1">Hershberger, John; Snoeyink, Jack (1992). <a rel="nofollow" class="external text" href="http://www.bowdoin.edu/~ltoma/teaching/cs350/spring06/Lecture-Handouts/hershberger92speeding.pdf"><i>Speeding Up the Douglas-Peucker Line-Simplification Algorithm</i></a> <span class="cs1-format">(PDF)</span> (Technical report).</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=report&amp;rft.btitle=Speeding+Up+the+Douglas-Peucker+Line-Simplification+Algorithm&amp;rft.date=1992&amp;rft.aulast=Hershberger&amp;rft.aufirst=John&amp;rft.au=Snoeyink%2C+Jack&amp;rft_id=http%3A%2F%2Fwww.bowdoin.edu%2F~ltoma%2Fteaching%2Fcs350%2Fspring06%2FLecture-Handouts%2Fhershberger92speeding.pdf&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ARamer%E2%80%93Douglas%E2%80%93Peucker+algorithm" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r982806391"/></span>
+</li>
+</ol></div></div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit&amp;section=11" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a rel="nofollow" class="external text" href="https://www.boost.org/doc/libs/1_67_0/libs/geometry/doc/html/geometry/reference/algorithms/simplify/simplify_3.html">Boost.Geometry support Douglas–Peucker simplification algorithm</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.codeproject.com/Articles/114797/Polyline-Simplification">Implementation of Ramer–Douglas–Peucker and many other simplification algorithms with open source licence in C++</a></li>
+<li><a rel="nofollow" class="external text" href="http://idea.ed.ac.uk/data/kmz/">XSLT implementation of the algorithm for use with KML data.</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.bdcc.co.uk/Gmaps/Services.htm">You can see the algorithm applied to a GPS log from a bike ride at the bottom of this page</a></li>
+<li><a rel="nofollow" class="external text" href="http://karthaus.nl/rdp/">Interactive visualization of the algorithm</a></li>
+<li><a rel="nofollow" class="external text" href="http://fssnip.net/kY">Implementation in F#</a></li>
+<li><a rel="nofollow" class="external text" href="https://github.com/odlp/simplify_rb">Ruby gem implementation</a></li>
+<li><a rel="nofollow" class="external text" href="https://github.com/locationtech/jts">JTS, Java Topology Suite</a>, contains Java implementation of many algorithms, including the <a rel="nofollow" class="external text" href="https://locationtech.github.io/jts/javadoc/org/locationtech/jts/simplify/DouglasPeuckerSimplifier.html">Douglas-Peucker algorithm</a></li></ul>
+<!-- 
+NewPP limit report
+Parsed by mw1365
+Cached time: 20210108074334
+Cache expiry: 2592000
+Dynamic content: false
+Complications: [vary‐revision‐sha1]
+CPU time usage: 0.212 seconds
+Real time usage: 0.344 seconds
+Preprocessor visited node count: 523/1000000
+Post‐expand include size: 13941/2097152 bytes
+Template argument size: 547/2097152 bytes
+Highest expansion depth: 9/40
+Expensive parser function count: 0/500
+Unstrip recursion depth: 1/20
+Unstrip post‐expand size: 20079/5000000 bytes
+Lua time usage: 0.122/10.000 seconds
+Lua memory usage: 2827513/52428800 bytes
+Number of Wikibase entities loaded: 0/400
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  206.418      1 -total
+ 63.94%  131.979      2 Template:Cite_techreport
+ 32.42%   66.912      1 Template:Reflist
+  8.63%   17.818      2 Template:Cite_book
+  6.25%   12.891      1 Template:Cite_conference
+  5.99%   12.359      2 Template:Doi
+  5.20%   10.725      1 Template:Cite_journal
+  2.99%    6.178      4 Template:Hide_in_print
+  1.39%    2.866      1 Template:Main_other
+  1.36%    2.807      2 Template:Only_in_print
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:18116059-0!canonical!math=5 and timestamp 20210108074334 and revision id 991615121. Serialized with JSON.
+ -->
+</div><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Ramer–Douglas–Peucker_algorithm&amp;oldid=991615121">https://en.wikipedia.org/w/index.php?title=Ramer–Douglas–Peucker_algorithm&amp;oldid=991615121</a>"</div></div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Computer_graphics_algorithms" title="Category:Computer graphics algorithms">Computer graphics algorithms</a></li><li><a href="/wiki/Category:Geometric_algorithms" title="Category:Geometric algorithms">Geometric algorithms</a></li><li><a href="/wiki/Category:Digital_signal_processing" title="Category:Digital signal processing">Digital signal processing</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Articles_with_example_pseudocode" title="Category:Articles with example pseudocode">Articles with example pseudocode</a></li></ul></div></div>
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Navigation menu</h2>
+	<div id="mw-head">
+		<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-personal" class="mw-portlet mw-portlet-personal vector-menu" aria-labelledby="p-personal-label" role="navigation" 
+	 >
+	<h3 id="p-personal-label">
+		<span>Personal tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"><li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Ramer%E2%80%93Douglas%E2%80%93Peucker+algorithm" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Ramer%E2%80%93Douglas%E2%80%93Peucker+algorithm" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o">Log in</a></li></ul>
+		
+	</div>
+</nav>
+
+		<div id="left-navigation">
+			<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" aria-labelledby="p-namespaces-label" role="navigation" 
+	 >
+	<h3 id="p-namespaces-label">
+		<span>Namespaces</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"><li id="ca-nstab-main" class="selected"><a href="/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm" title="View the content page [c]" accesskey="c">Article</a></li><li id="ca-talk"><a href="/wiki/Talk:Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm" rel="discussion" title="Discuss improvements to the content page [t]" accesskey="t">Talk</a></li></ul>
+		
+	</div>
+</nav>
+
+			<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-variants" class="mw-portlet mw-portlet-variants emptyPortlet vector-menu vector-menu-dropdown" aria-labelledby="p-variants-label" role="navigation" 
+	 >
+	<input type="checkbox" class="vector-menu-checkbox" aria-labelledby="p-variants-label" />
+	<h3 id="p-variants-label">
+		<span>Variants</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+		</div>
+		<div id="right-navigation">
+			<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-views" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" aria-labelledby="p-views-label" role="navigation" 
+	 >
+	<h3 id="p-views-label">
+		<span>Views</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"><li id="ca-view" class="selected"><a href="/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm">Read</a></li><li id="ca-edit"><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></li><li id="ca-history"><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></li></ul>
+		
+	</div>
+</nav>
+
+			<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-cactions" class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu vector-menu-dropdown" aria-labelledby="p-cactions-label" role="navigation" 
+	 >
+	<input type="checkbox" class="vector-menu-checkbox" aria-labelledby="p-cactions-label" />
+	<h3 id="p-cactions-label">
+		<span>More</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+			<div id="p-search" role="search">
+	<h3 >
+		<label for="searchInput">Search</label>
+	</h3>
+	<form action="/w/index.php" id="searchform">
+		<div id="simpleSearch" data-search-loc="header-navigation">
+			<input type="search" name="search" placeholder="Search Wikipedia" autocapitalize="sentences" title="Search Wikipedia [f]" accesskey="f" id="searchInput"/>
+			<input type="hidden" name="title" value="Special:Search">
+			<input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/>
+			<input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>
+		</div>
+	</form>
+</div>
+
+		</div>
+	</div>
+	
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a  title="Visit the main page" class="mw-wiki-logo" href="/wiki/Main_Page"></a>
+	</div>
+	<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-navigation" class="mw-portlet mw-portlet-navigation vector-menu vector-menu-portal portal portal-first" aria-labelledby="p-navigation-label" role="navigation" 
+	 >
+	<h3 id="p-navigation-label">
+		<span>Navigation</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"><li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-contents"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia">Contents</a></li><li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Articles related to current events">Current events</a></li><li id="n-randompage"><a href="/wiki/Special:Random" title="Visit a randomly selected article [x]" accesskey="x">Random article</a></li><li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Learn about Wikipedia and how it works">About Wikipedia</a></li><li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact us</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us by donating to the Wikimedia Foundation">Donate</a></li></ul>
+		
+	</div>
+</nav>
+
+	<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-interaction" class="mw-portlet mw-portlet-interaction vector-menu vector-menu-portal portal" aria-labelledby="p-interaction-label" role="navigation" 
+	 >
+	<h3 id="p-interaction-label">
+		<span>Contribute</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"><li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li><li id="n-introduction"><a href="/wiki/Help:Introduction" title="Learn how to edit Wikipedia">Learn to edit</a></li><li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="The hub for editors">Community portal</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes to Wikipedia [r]" accesskey="r">Recent changes</a></li><li id="n-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Add images or other media for use on Wikipedia">Upload file</a></li></ul>
+		
+	</div>
+</nav>
+<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-tb" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label" role="navigation" 
+	 >
+	<h3 id="p-tb-label">
+		<span>Tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"><li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;oldid=991615121" title="Permanent link to this revision of this page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=info" title="More information about this page">Page information</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;id=991615121&amp;wpFormIdentifier=titleform" title="Information on how to cite this page">Cite this page</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q1251950" title="Structured data on this page hosted by Wikidata [g]" accesskey="g">Wikidata item</a></li></ul>
+		
+	</div>
+</nav>
+<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-coll-print_export" class="mw-portlet mw-portlet-coll-print_export vector-menu vector-menu-portal portal" aria-labelledby="p-coll-print_export-label" role="navigation" 
+	 >
+	<h3 id="p-coll-print_export-label">
+		<span>Print/export</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"><li id="coll-download-as-rl"><a href="/w/index.php?title=Special:DownloadAsPdf&amp;page=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;action=show-download-screen" title="Download this page as a PDF file">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li></ul>
+		
+	</div>
+</nav>
+
+	<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-lang" class="mw-portlet mw-portlet-lang vector-menu vector-menu-portal portal" aria-labelledby="p-lang-label" role="navigation" 
+	 >
+	<h3 id="p-lang-label">
+		<span>Languages</span>
+	</h3>
+	<div class="vector-menu-content">
+		<ul class="vector-menu-content-list"><li class="interlanguage-link interwiki-ca"><a href="https://ca.wikipedia.org/wiki/Algorisme_de_Ramer%E2%80%93Douglas%E2%80%93Peucker" title="Algorisme de Ramer–Douglas–Peucker – Catalan" lang="ca" hreflang="ca" class="interlanguage-link-target">Català</a></li><li class="interlanguage-link interwiki-cs"><a href="https://cs.wikipedia.org/wiki/Douglas%C5%AFv%E2%80%93Peucker%C5%AFv_algoritmus" title="Douglasův–Peuckerův algoritmus – Czech" lang="cs" hreflang="cs" class="interlanguage-link-target">Čeština</a></li><li class="interlanguage-link interwiki-de"><a href="https://de.wikipedia.org/wiki/Douglas-Peucker-Algorithmus" title="Douglas-Peucker-Algorithmus – German" lang="de" hreflang="de" class="interlanguage-link-target">Deutsch</a></li><li class="interlanguage-link interwiki-es"><a href="https://es.wikipedia.org/wiki/Algoritmo_de_Ramer%E2%80%93Douglas%E2%80%93Peucker" title="Algoritmo de Ramer–Douglas–Peucker – Spanish" lang="es" hreflang="es" class="interlanguage-link-target">Español</a></li><li class="interlanguage-link interwiki-fr"><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Douglas-Peucker" title="Algorithme de Douglas-Peucker – French" lang="fr" hreflang="fr" class="interlanguage-link-target">Français</a></li><li class="interlanguage-link interwiki-it"><a href="https://it.wikipedia.org/wiki/Algoritmo_Ramer-Douglas-Peucker" title="Algoritmo Ramer-Douglas-Peucker – Italian" lang="it" hreflang="it" class="interlanguage-link-target">Italiano</a></li><li class="interlanguage-link interwiki-ru"><a href="https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%A0%D0%B0%D0%BC%D0%B5%D1%80%D0%B0_%E2%80%94_%D0%94%D1%83%D0%B3%D0%BB%D0%B0%D1%81%D0%B0_%E2%80%94_%D0%9F%D0%B5%D0%BA%D0%B5%D1%80%D0%B0" title="Алгоритм Рамера — Дугласа — Пекера – Russian" lang="ru" hreflang="ru" class="interlanguage-link-target">Русский</a></li><li class="interlanguage-link interwiki-sr"><a href="https://sr.wikipedia.org/wiki/Ramer-Daglas-Peker_Algoritam" title="Ramer-Daglas-Peker Algoritam – Serbian" lang="sr" hreflang="sr" class="interlanguage-link-target">Српски / srpski</a></li><li class="interlanguage-link interwiki-uk"><a href="https://uk.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%A0%D0%B0%D0%BC%D0%B5%D1%80%D0%B0_%E2%80%94_%D0%94%D1%83%D0%B3%D0%BB%D0%B0%D1%81%D0%B0_%E2%80%94_%D0%9F%D0%B5%D0%BA%D0%B5%D1%80%D0%B0" title="Алгоритм Рамера — Дугласа — Пекера – Ukrainian" lang="uk" hreflang="uk" class="interlanguage-link-target">Українська</a></li><li class="interlanguage-link interwiki-zh"><a href="https://zh.wikipedia.org/wiki/%E9%81%93%E6%A0%BC%E6%8B%89%E6%96%AF-%E6%99%AE%E5%85%8B%E7%AE%97%E6%B3%95" title="道格拉斯-普克算法 – Chinese" lang="zh" hreflang="zh" class="interlanguage-link-target">中文</a></li></ul>
+		<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q1251950#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>
+	</div>
+</nav>
+
+</div>
+
+</div>
+<footer id="footer" class="mw-footer" role="contentinfo" >
+	<ul id="footer-info" >
+	<li id="footer-info-lastmod"> This page was last edited on 30 November 2020, at 23:54<span class="anonymous-show">&#160;(UTC)</span>.</li>
+	<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//foundation.wikimedia.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//foundation.wikimedia.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+</ul>
+
+	<ul id="footer-places" >
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+	<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+	<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+	<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+	<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+</ul>
+
+	<ul id="footer-icons" class="noprint">
+	<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/"><img src="/static/images/footer/wikimedia-button.png" srcset="/static/images/footer/wikimedia-button-1.5x.png 1.5x, /static/images/footer/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation" loading="lazy" /></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="/static/images/footer/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/footer/poweredby_mediawiki_132x47.png 1.5x, /static/images/footer/poweredby_mediawiki_176x62.png 2x" width="88" height="31" loading="lazy"/></a></li>
+</ul>
+
+	<div style="clear: both;"></div>
+</footer>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.212","walltime":"0.344","ppvisitednodes":{"value":523,"limit":1000000},"postexpandincludesize":{"value":13941,"limit":2097152},"templateargumentsize":{"value":547,"limit":2097152},"expansiondepth":{"value":9,"limit":40},"expensivefunctioncount":{"value":0,"limit":500},"unstrip-depth":{"value":1,"limit":20},"unstrip-size":{"value":20079,"limit":5000000},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%  206.418      1 -total"," 63.94%  131.979      2 Template:Cite_techreport"," 32.42%   66.912      1 Template:Reflist","  8.63%   17.818      2 Template:Cite_book","  6.25%   12.891      1 Template:Cite_conference","  5.99%   12.359      2 Template:Doi","  5.20%   10.725      1 Template:Cite_journal","  2.99%    6.178      4 Template:Hide_in_print","  1.39%    2.866      1 Template:Main_other","  1.36%    2.807      2 Template:Only_in_print"]},"scribunto":{"limitreport-timeusage":{"value":"0.122","limit":"10.000"},"limitreport-memusage":{"value":2827513,"limit":52428800}},"cachereport":{"origin":"mw1365","timestamp":"20210108074334","ttl":2592000,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Ramer\u2013Douglas\u2013Peucker algorithm","url":"https:\/\/en.wikipedia.org\/wiki\/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm","sameAs":"http:\/\/www.wikidata.org\/entity\/Q1251950","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q1251950","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2008-06-24T19:27:13Z","dateModified":"2020-11-30T23:54:02Z","headline":"line simplification algorithm"}</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":134,"wgHostname":"mw1273"});});</script>
+</body></html>

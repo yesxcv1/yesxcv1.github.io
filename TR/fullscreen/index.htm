@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" typeof="bibo:Document w3p:NOTE" about="" property="dcterms:language" content="en">
+<head>
+  <title>Fullscreen</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <style type="text/css">
+   .example { margin-left:1em; padding-left:1em; border-left:double; color:#222; background:#fcfcfc }
+   .note { margin-left:2em; font-weight:bold; font-style:italic; color:green }
+   .note pre { font-weight:normal; font-style:normal }
+   .XXX { padding:.5em; border:solid #f00 }
+   em.ct {
+    text-transform:lowercase;
+    font-variant:small-caps;
+    font-style:normal
+   }
+   dfn { font-weight:bold; font-style:normal }
+   code { color: maroon; }
+   code:link, code:visited { color:inherit }
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-WG-NOTE">
+</head>
+<body>
+
+<div class="head">
+<p><a href="http://www.w3.org/"><img alt="W3C" height="48" src="http://www.w3.org/Icons/w3c_home" width="72"></a></p>
+
+ <h1>Fullscreen</h1>
+ <h2 class="no-num no-toc publish" id="w3c-working-group-note-18-november-2014">W3C Working Group Note 18 November 2014</h2>
+
+ <dl>
+  <dt>This Version:</dt>
+  <dd class="publish"><a href="http://www.w3.org/TR/2014/NOTE-fullscreen-20141118/">http://www.w3.org/TR/2014/NOTE-fullscreen-20141118/</a></dd>
+
+  <dt class="publish">Latest Version:</dt>
+  <dd class="publish"><a href="http://www.w3.org/TR/fullscreen/">http://www.w3.org/TR/fullscreen/</a></dd>
+
+  <dt class="publish">Previous version:</dt>
+  <dd class="publish"><a href="http://www.w3.org/TR/2012/WD-fullscreen-20120703/">http://www.w3.org/TR/2012/WD-fullscreen-20120703/</a></dd>
+
+  <dt class="publish">See Instead:</dt>
+  <dd class="publish"><a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a></dd>
+
+  <dt>Version History:</dt>
+ <dd><a href="http://dvcs.w3.org/hg/fullscreen/shortlog">http://dvcs.w3.org/hg/fullscreen/shortlog</a></dd>
+
+  <dt>Editors:</dt>
+  <dd class="h-card vcard"><a class="u-url url p-name fn" href="http://annevankesteren.nl/" lang="nl">Anne van Kesteren</a>
+    (<a class="p-org org h-org h-card" href="http://www.mozilla.org/">Mozilla</a>)
+    &lt;<a class="u-email email " href="mailto:annevk@annevk.nl">annevk@annevk.nl</a>&gt;</dd>
+
+  <dd class="h-card vcard"><a class="u-url url p-fn fn" href="http://tantek.com/" lang="tr">Tantek &Ccedil;elik</a>
+    (<a class="p-org org h-org h-card" href="http://www.mozilla.org/">Mozilla</a>)
+    &lt;<a class="u-email email" href="mailto:tantek@cs.stanford.edu">tantek@cs.stanford.edu</a>&gt;</dd>
+ </dl>
+
+<!--begin-copyright-->
+<p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2012 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> 
+ (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, 
+  <a href="http://www.ercim.org/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, 
+  <a href="http://www.keio.ac.jp/">Keio</a>,
+  <a href="http://ev.buaa.edu.cn/">Beihang</a>), 
+ All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+<!--end-copyright-->
+</div>
+
+<hr class="top"/>
+
+<h2 class="no-num no-toc" id="abstract">Abstract</h2>
+<p>Fullscreen defines the fullscreen API for the web platform.
+
+<h2 class="no-num no-toc" id="status-of-this-document"><span id="sotd">Status of this Document</span></h2>
+<p><i>This section describes the status of this document at the time of its
+publication. Other documents may supersede this document. A list of current W3C
+publications and the latest revision of this technical report can be found in
+the <a href="http://www.w3.org/TR/">W3C technical reports index</a> at
+http://www.w3.org/TR/.</i>
+
+<p>This is the 18 November 2014 W3C Working Group Note of Fullscreen. 
+
+<p>This document was jointly produced by the
+<a href="http://www.w3.org/2008/webapps/">Web Applications Working Group</a> and the
+<a href="http://www.w3.org/Style/CSS/members">CSS Working Group</a>.
+The Web Applications Working Group is part of the
+<a href="http://www.w3.org/2006/rwc/Activity">Rich Web Clients Activity</a> and
+the CSS Working Group is part of the <a href="http://www.w3.org/Style/">Style Activity</a>. Both
+of these Working Groups are part of the the W3C 
+<a href="http://www.w3.org/Interaction/">Interaction Domain</a>.
+
+<p><strong>Work on this document has been discontinued and it should not be 
+ referenced or used as a basis for implementation. At the time this document
+ was published, the WHATWG was working on a 
+ <a href="http://fullscreen.spec.whatwg.org">Fullscreen API</a> specification.</strong></p>
+
+<p>Comments related to the API part of this document should be sent to the
+<a href="mailto:public-webapps@w3.org?subject=%5Bfullscreen-api%5D%20">public-webapps</a> mail list
+(<a href="http://lists.w3.org/Archives/Public/public-webapps/">archived</a>) 
+with a subject header of <samp>[fullscreen]</samp> and 
+comments related to the rendering part of this document should be sent to 
+the <a href="mailto:www-style@w3.org?subject=%5Bfullscreen-css%5D%20">www-style</a> mail list
+(<a href="http://lists.w3.org/Archives/Public/www-style/">archived</a>) 
+with a subject header of <samp>[fullscreen]</samp>. Alternatively, 
+<a href="https://www.w3.org/Bugs/Public/enter_bug.cgi?product=WebAppsWG&amp;component=Fullscreen">file a bug</a>.
+
+<p>Publication as a Working Group Note does not imply endorsement by the W3C
+Membership. This is a draft document and may be updated, replaced or obsoleted
+by other documents at any time. It is inappropriate to cite this document as
+other than work in progress.</p>
+
+<p>This document was produced by groups operating under the <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Patent Policy</a>. W3C maintains a <a href="http://www.w3.org/2004/01/pp-impl/42538/status" rel="disclosure">public list of any patent disclosures (WebApps)</a> and a <a href="http://www.w3.org/2004/01/pp-impl/32061/status" rel="disclosure">public list of any patent disclosures (CSS)</a> made in connection with the deliverables of each group; these pages also include instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the W3C Patent Policy</a>.</p>
+
+<p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2005/10/Process-20051014/">14 October 2005 W3C Process Document</a>. </p>
+
+<script src="https://www.w3.org/scripts/TR/fixup.js"></script></body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+<title>R&eacute;seau d'Observation M&eacute;t&eacute;o du Massif Alpin</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+ <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Language" content="fr" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+<meta name="keywords" content="météo, meteo, meteo en france, météo alpes, meteo alpes, meteo haute savoie, météo haute savoie, météo savoie, meteo savoie, météo isere, météo isère, météo hautes alpes, meteo hautes alpes, neige, enneigement, prévision météo alpes, previsions meteo alpes, previsions meteo haute savoie, prévision météo haute savoie, prévision météo savoie, previsions meteo savoie, prévision météo isère, meteo isere, prévision météo hautes alpes, previsions meteo hautes alpes, enneigement, avalanche, enneigement haute savoie, enneigement savoie, enneigement isere, enneigement hautes alpes">
+<link href="css/template_large.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css" />
+<link href="menu/menu.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/css/jquery.dataTables.min.css"/>
+<!-- script du menu -->
+<script type="text/javascript" src="menu/dynmenu.js"></script>
+ <!-- détéction du navigateur -->
+<script type="text/javascript" src="menu/browserdetect.js"></script>
+<script type="text/javascript" src="./js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="./js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="./js/jquery-blink.js"></script> 
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="./js/anynumbersort.js"></script>
+<!--[if IE]>
+ <style type="text/css">
+ html pre
+{
+    width: 636px ;
+}
+</style>
+<![endif]-->
+<!--
+<script type="text/javascript" src="./js/jquery.qtip.min.js"></script>-->
+<link href="css/jquery.qtip.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript">
+    <!--
+    $(document).ready(function(){
+        $("#rommatabs").tabs({ cookie: { expires: 60 }, cache: false });
+
+    });
+
+
+    //-->
+</script>
+
+
+</head>
+
+<body>
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script type="text/javascript" src="overlib/overlib.js"></script>
+
+<div id="conteneur3">
+    <div id="header3"></div>
+
+    <div id="bandeau_menu3" style="visibility:hidden">
+        
+
+<ul id="menu" style="z-index:2">
+    <li><a href="/index.php">ACCUEIL</a></li>
+    <li><a href="#">STATIONS</a>
+                <ul style="z-index:2">
+                    <li><a href="#"><b>&nbsp;&nbsp;01-AIN</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=65"><b>&nbsp;&nbsp;BREGNIER-CORDON, 225m</b></a></li>
+                            <li><a href="/station_24.php?id=55"><b>&nbsp;&nbsp;VIRIAT, 231m</b></a></li>
+                            <li><a href="/station_24.php?id=107"><b>&nbsp;&nbsp;PONT-D'AIN, 236m</b></a></li>
+                            <li><a href="/station_24.php?id=17"><b>&nbsp;&nbsp;ST-&Eacute;TIENNE-DU-BOIS, 243m</b></a></li>
+                            <li><a href="/station_24.php?id=182"><b>&nbsp;&nbsp;BOURG-EN-BRESSE, 248m</b></a></li>
+                            <li><a href="/station_24.php?id=84"><b>&nbsp;&nbsp;AMB&Eacute;RIEU-EN-BUGEY, 255m</b></a></li>
+                            <li><a href="/station_24.php?id=710"><b>&nbsp;&nbsp;SEYSSEL, 263m</b></a></li>
+                            <li><a href="/station_24.php?id=15"><b>&nbsp;&nbsp;BRIORD, 281m</b></a></li>
+                            <li><a href="/station_24.php?id=111"><b>&nbsp;&nbsp;LEAZ, 520m</b></a></li>
+                            <li><a href="/station_24.php?id=172"><b>&nbsp;&nbsp;LHOPITAL, 510m</b></a></li>
+                            <li><a href="/station_24.php?id=87"><b>&nbsp;&nbsp;INNIMOND, 890m</b></a></li>
+                            <li><a href="/station_24.php?id=103"><b>&nbsp;&nbsp;LELEX, 910m</b></a></li>
+                            <li><a href="/station_24.php?id=104"><b>&nbsp;&nbsp;LA VATTAY, 1265m</b></a></li>
+							<li><a href="/station_24.php?id=112"><b>&nbsp;&nbsp;SORGIA, 1380m</b></a></li>
+                            <li><a href="/station_24.php?id=108"><b>&nbsp;&nbsp;MONTOISEY, 1657m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;04-ALPES DE HTE-PROVENCE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=143"><b>&nbsp;&nbsp;SISTERON, 485m</b></a></li>
+                            <li><a href="/station_24.php?id=77"><b>&nbsp;&nbsp;DIGNE-LES-BAINS, 610m</b></a></li>
+                            <li><a href="/station_24.php?id=127"><b>&nbsp;&nbsp;ANNOT, 750m</b></a></li>
+                            <li><a href="/station_24.php?id=174"><b>&nbsp;&nbsp;CHAMPTERCIER, 760m</b></a></li>
+                            <li><a href="/station_24.php?id=129"><b>&nbsp;&nbsp;LA JAVIE, 820m</b></a></li>
+                            <li><a href="/station_24.php?id=185"><b>&nbsp;&nbsp;PRADS-HT-BLEONE, 1036m</b></a></li>
+                            <li><a href="/station_24.php?id=8"><b>&nbsp;&nbsp;SELONNET, 1065m</b></a></li>
+                            <li><a href="/station_24.php?id=88"><b>&nbsp;&nbsp;LE VERNET, 1290m</b></a></li>
+                            <li><a href="/station_24.php?id=66"><b>&nbsp;&nbsp;SEYNE - LE GRAND PUY, 1375m</b></a></li>
+                            <li><a href="/station_24.php?id=61"><b>&nbsp;&nbsp;SEYNE - LE FAUT, 1450m</b></a></li>
+                            <li><a href="/station_24.php?id=35"><b>&nbsp;&nbsp;CHABANON, 1720m</b></a></li>
+                            <li><a href="/station_24.php?id=154"><b>&nbsp;&nbsp;ST-PAUL-SUR-UBAYE, 1900m</b></a></li>
+                            <li><a href="/station_24.php?id=79"><b>&nbsp;&nbsp;HAUT-CHABANON, 1970m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;05-HAUTES-ALPES</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=92"><b>&nbsp;&nbsp;GAP, 785m</b></a></li>
+                            <li><a href="/station_24.php?id=75"><b>&nbsp;&nbsp;LA BEAUME, 820m</b></a></li>
+                            <li><a href="/station_24.php?id=53"><b>&nbsp;&nbsp;EYGLIERS, 965m</b></a></li>
+                            <li><a href="/station_24.php?id=42"><b>&nbsp;&nbsp;LA FREISSINOUSE, 1004m</b></a></li>
+                            <li><a href="/station_24.php?id=51"><b>&nbsp;&nbsp;ST-LEGER-LES-MELEZES, 1245m</b></a></li>
+                            <li><a href="/station_24.php?id=85"><b>&nbsp;&nbsp;ORCI&Egrave;RES-CHAUFFAREL, 1257m</b></a></li>
+                            <li><a href="/station_24.php?id=134"><b>&nbsp;&nbsp;ORCI&Egrave;RES-LES TOURRENGS, 1277m</b></a></li>
+                            <li><a href="/station_24.php?id=7"><b>&nbsp;&nbsp;LES ORRES, 1460m</b></a></li>
+                            <li><a href="/station_24.php?id=86"><b>&nbsp;&nbsp;PUY-SAINT-PIERRE, 1560m</b></a></li>
+                            <li><a href="/station_24.php?id=2"><b>&nbsp;&nbsp;ORCI&Egrave;RES, 1610m</b></a></li>
+                            <li><a href="/station_24.php?id=178"><b>&nbsp;&nbsp;RISTOLAS, 1670m</b></a></li>
+                            <li><a href="/station_24.php?id=719"><b>&nbsp;&nbsp;MONTAGNE-DE-CEUZE, 1765m</b></a></li>
+                            <li><a href="/station_24.php?id=25"><b>&nbsp;&nbsp;SAINT-V&Eacute;RAN, 2040m</b></a></li>
+                            <li><a href="/station_24.php?id=21"><b>&nbsp;&nbsp;COL DU LAUTARET, 2075m</b></a></li>
+                            <li><a href="/station_24.php?id=165"><b>&nbsp;&nbsp;REFUGE CHAMOISSIERE, 2109m</b></a></li>
+                            <li><a href="/station_24.php?id=188"><b>&nbsp;&nbsp;COL-DE-JAFFUEIL, 2500m</b></a></li>
+                            <li><a href="/station_24.php?id=27"><b>&nbsp;&nbsp;PLATEAU DE BURE, 2553m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;06-ALPES-MARITIMES</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=189"><b>&nbsp;&nbsp;SOPHIA-ANTIPOLIS, 125m</b></a></li>
+                            <li><a href="/station_24.php?id=161"><b>&nbsp;&nbsp;GILETTE, 150m</b></a></li>
+                            <li><a href="/station_24.php?id=136"><b>&nbsp;&nbsp;NICE, 190m</b></a></li>
+                            <li><a href="/station_24.php?id=137"><b>&nbsp;&nbsp;VENCE, 329m</b></a></li>
+                            <li><a href="/station_24.php?id=152"><b>&nbsp;&nbsp;TOURRETTE-LEVENS, 416m</b></a></li>
+                            <li><a href="/station_24.php?id=135"><b>&nbsp;&nbsp;CLANS, 665m</b></a></li>
+                            <li><a href="/station_24.php?id=150"><b>&nbsp;&nbsp;ST-VALLIER-DE-THIEY, 723m</b></a></li>
+                            <li><a href="/station_24.php?id=151"><b>&nbsp;&nbsp;CIPI&Egrave;RES, 823m</b></a></li>
+                            <li><a href="/station_24.php?id=132"><b>&nbsp;&nbsp;ILONSE, 1000m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;07-ARD&Egrave;CHE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=180"><b>&nbsp;&nbsp;THORRENC, 363m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;13-BOUCHES-DU-RHONE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=67"><b>&nbsp;&nbsp;GRAVESON, 17m</b></a></li>
+                            <li><a href="/station_24.php?id=187"><b>&nbsp;&nbsp;ST-PAUL-LES-DURANCE, 270m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;26-DR&Ocirc;ME</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=164"><b>&nbsp;&nbsp;MONTELIMAR, 88m</b></a></li>
+                            <li><a href="/station_24.php?id=59"><b>&nbsp;&nbsp;BOURG-LES-VALENCE, 150m</b></a></li>
+                            <li><a href="/station_24.php?id=123"><b>&nbsp;&nbsp;GRANGES-LES-BEAUMONT, 155m</b></a></li>
+                            <li><a href="/station_24.php?id=97"><b>&nbsp;&nbsp;AOUSTE-SUR-SYE, 206m</b></a></li>
+                            <li><a href="/station_24.php?id=904"><b>&nbsp;&nbsp;MONTBRISON-SUR-LEZ, 287m</b></a></li>
+                            <li><a href="/station_24.php?id=62"><b>&nbsp;&nbsp;CREST, 315m</b></a></li>
+                            <li><a href="/station_24.php?id=194"><b>&nbsp;&nbsp;MONTJOYER, 325m</b></a></li>
+                            <li><a href="/station_24.php?id=116"><b>&nbsp;&nbsp;ST-SORLIN-EN-VALLOIRE, 340m</b></a></li>
+                            <li><a href="/station_24.php?id=159"><b>&nbsp;&nbsp;DIE, 390m</b></a></li>
+                            <li><a href="/station_24.php?id=900"><b>&nbsp;&nbsp;LE P&Egrave;GUE, 390m</b></a></li>
+                            <li><a href="/station_24.php?id=83"><b>&nbsp;&nbsp;PEYRUS, 430m</b></a></li>
+                            <li><a href="/station_24.php?id=64"><b>&nbsp;&nbsp;RECOUBEAU, 510m</b></a></li>
+                            <li><a href="/station_24.php?id=158"><b>&nbsp;&nbsp;ST-JULIEN-EN-QUINT, 574m</b></a></li>
+                            <li><a href="/station_24.php?id=903"><b>&nbsp;&nbsp;TESSI&Egrave;RRES, 645m</b></a></li>
+                            <li><a href="/station_24.php?id=20"><b>&nbsp;&nbsp;ST-AGNAN-EN-VERCORS, 758m</b></a></li>
+                            <li><a href="/station_24.php?id=160"><b>&nbsp;&nbsp;VALOUSE, 767m</b></a></li>
+                            <li><a href="/station_24.php?id=78"><b>&nbsp;&nbsp;POMMEROL, 780m</b></a></li>
+                            <li><a href="/station_24.php?id=176"><b>&nbsp;&nbsp;BOULC, 830m</b></a></li>
+                            <li><a href="/station_24.php?id=705"><b>&nbsp;&nbsp;COMBE DE L'OSCENCE, 1000m</b></a></li>
+                            <li><a href="/station_24.php?id=2101"><b>&nbsp;&nbsp;LA CHAPELLE-EN-VERCORS, 1346m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;38-IS&Egrave;RE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=6"><b>&nbsp;&nbsp;LE VERSOUD, 220m</b></a></li>
+                            <li><a href="/station_24.php?id=4"><b>&nbsp;&nbsp;ST-MARTIN-D'H&Egrave;RES, 220m</b></a></li>
+                            <li><a href="/station_24.php?id=14"><b>&nbsp;&nbsp;BOUVESSE-QUIRIEU, 222m</b></a></li>
+                            <li><a href="/station_24.php?id=183"><b>&nbsp;&nbsp;LUZINAY, 222m</b></a></li>
+                            <li><a href="/station_24.php?id=50"><b>&nbsp;&nbsp;L'ISLE-D'ABEAU, 260m</b></a></li>
+                            <li><a href="/station_24.php?id=173"><b>&nbsp;&nbsp;NOYAREY, 260m</b></a></li>
+                            <li><a href="/station_24.php?id=94"><b>&nbsp;&nbsp;TREPT, 265m</b></a></li>
+                            <li><a href="/station_24.php?id=16"><b>&nbsp;&nbsp;ST-V&Eacute;RAND, 287m</b></a></li>
+                            <li><a href="/station_24.php?id=5"><b>&nbsp;&nbsp;VIZILLE, 290m</b></a></li>
+                            <li><a href="/station_24.php?id=109"><b>&nbsp;&nbsp;VOIRON, 300m</b></a></li>
+                            <li><a href="/station_24.php?id=48"><b>&nbsp;&nbsp;FARAMANS, 374m</b></a></li>
+                            <li><a href="/station_24.php?id=46"><b>&nbsp;&nbsp;ST-BLAISE-DU-BUIS, 395m</b></a></li>
+                            <li><a href="/station_24.php?id=82"><b>&nbsp;&nbsp;ST-JOSEPH-DE-RIVIERE, 400m</b></a></li>
+                            <li><a href="/station_24.php?id=156"><b>&nbsp;&nbsp;ST-LAURENT-DU-PONT, 410m</b></a></li>
+                            <li><a href="/station_24.php?id=145"><b>&nbsp;&nbsp;BEAUCROISSANT, 425m</b></a></li>
+                            <li><a href="/station_24.php?id=32"><b>&nbsp;&nbsp;ST-CHRISTOPHE-SUR-G., 533m</b></a></li>
+                            <li><a href="/station_24.php?id=44"><b>&nbsp;&nbsp;CHELIEU, 550m</b></a></li>
+                            <li><a href="/station_24.php?id=169"><b>&nbsp;&nbsp;SECHILIENNE, 550m</b></a></li>
+                            <li><a href="/station_24.php?id=179"><b>&nbsp;&nbsp;BRION, 673m</b></a></li>
+                            <li><a href="/station_24.php?id=101"><b>&nbsp;&nbsp;PINSOT, 750m</b></a></li>
+                            <li><a href="/station_24.php?id=22"><b>&nbsp;&nbsp;MIRIBEL-LES-&Eacute;CHELLES, 760m</b></a></li>
+                            <li><a href="/station_24.php?id=106"><b>&nbsp;&nbsp;THEYS, 760m</b></a></li>
+                            <li><a href="/station_24.php?id=141"><b>&nbsp;&nbsp;ST-PIERRE-DE-CHARTREUSE, 900m</b></a></li>
+                            <li><a href="/station_24.php?id=139"><b>&nbsp;&nbsp;ENGINS, 906m</b></a></li>
+                            <li><a href="/station_24.php?id=41"><b>&nbsp;&nbsp;CHOLONGE, 910m</b></a></li>
+                            <li><a href="/station_24.php?id=157"><b>&nbsp;&nbsp;LES ADRETS, 920m</b></a></li>
+                            <li><a href="/station_24.php?id=58"><b>&nbsp;&nbsp;LE SAPPEY-EN-CHARTREUSE, 925m</b></a></li>
+                            <li><a href="/station_24.php?id=186"><b>&nbsp;&nbsp;ST-HILAIRE, 925m</b></a></li>
+                            <li><a href="/station_24.php?id=80"><b>&nbsp;&nbsp;LANS-EN-VERCORS, 990m</b></a></li>
+                            <li><a href="/station_24.php?id=33"><b>&nbsp;&nbsp;LA FERRI&Egrave;RE, 1000m</b></a></li>
+                            <li><a href="/station_24.php?id=122"><b>&nbsp;&nbsp;MALLEVAL-EN-VERCORS, 1090m</b></a></li>
+                            <li><a href="/station_24.php?id=113"><b>&nbsp;&nbsp;LA RUCH&Egrave;RE, 1150m</b></a></li>
+                            <li><a href="/station_24.php?id=181"><b>&nbsp;&nbsp;LA SALETTE-FALLAVAUX, 1210m</b></a></li>
+                            <li><a href="/station_24.php?id=131"><b>&nbsp;&nbsp;GRESSE-EN-VERCORS, 1235m</b></a></li>
+                            <li><a href="/station_24.php?id=726"><b>&nbsp;&nbsp;CORRENCON-EN-VERCORS, 1272m</b></a></li>
+                            <li><a href="/station_24.php?id=133"><b>&nbsp;&nbsp;LANS-LES ALLIERES, 1449m</b></a></li>
+                            <li><a href="/station_24.php?id=2102"><b>&nbsp;&nbsp;GRESSE-EN-V./GERLAND, 1512m</b></a></li>
+                            <li><a href="/station_24.php?id=100"><b>&nbsp;&nbsp;VILLARD-REYMOND, 1688m</b></a></li>
+                            <li><a href="/station_24.php?id=3"><b>&nbsp;&nbsp;CHAMROUSSE, 1800m</b></a></li>
+                            <li><a href="/station_24.php?id=2103"><b>&nbsp;&nbsp;CHICHILIANNE, 1884m</b></a></li>
+                            <li><a href="/station_24.php?id=802"><b>&nbsp;&nbsp;HUEZ, 2064m</b></a></li>
+                            <li><a href="/station_24.php?id=147"><b>&nbsp;&nbsp;LES SEPT-LAUX, 2130m</b></a></li>
+                            <li><a href="/station_24.php?id=72"><b>&nbsp;&nbsp;CROIX-DE-CHAMROUSSE, 2250m</b></a></li>
+                            <li><a href="/station_24.php?id=803"><b>&nbsp;&nbsp;CHAMBON, 2460m</b></a></li>
+                            <li><a href="/station_24.php?id=804"><b>&nbsp;&nbsp;B&Eacute;RARDE, 2390m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;39-JURA</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=720"><b>&nbsp;&nbsp;SAINT-CLAUDE, 840m</b></a></li>
+                            <li><a href="/station_24.php?id=70"><b>&nbsp;&nbsp;LES MOLUNES, 1250m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;69-RH&Ocirc;NE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=124"><b>&nbsp;&nbsp;LYON, 169m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;73-SAVOIE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=153"><b>&nbsp;&nbsp;AIX-LES-BAINS, 232m</b></a></li>
+                            <li><a href="/station_24.php?id=74"><b>&nbsp;&nbsp;CHINDRIEUX, 250m</b></a></li>
+                            <li><a href="/station_24.php?id=148"><b>&nbsp;&nbsp;CHALLES-LES-EAUX, 325m</b></a></li>
+                            <li><a href="/station_24.php?id=52"><b>&nbsp;&nbsp;MEYRIEU-TROUET, 620m</b></a></li>
+                            <li><a href="/station_24.php?id=715"><b>&nbsp;&nbsp;CURIENNE, 645m</b></a></li>
+                            <li><a href="/station_24.php?id=177"><b>&nbsp;&nbsp;LA MOTTE-EN-BAUGES, 670m</b></a></li>
+                            <li><a href="/station_24.php?id=723"><b>&nbsp;&nbsp;ARITH, 720m</b></a></li>
+                            <li><a href="/station_24.php?id=198"><b>&nbsp;&nbsp;LA THUILE, 890m</b></a></li>
+                            <li><a href="/station_24.php?id=49"><b>&nbsp;&nbsp;ST-NICOLAS-LA-CHAPELLE, 930m</b></a></li>
+                            <li><a href="/station_24.php?id=138"><b>&nbsp;&nbsp;COL DU CLERGEON, 970m</b></a></li>
+                            <li><a href="/station_24.php?id=721"><b>&nbsp;&nbsp;ENTREMONT-LE-VIEUX, 1030m</b></a></li>
+                            <li><a href="/station_24.php?id=126"><b>&nbsp;&nbsp;LES D&Eacute;SERTS, 1060m</b></a></li>
+                            <li><a href="/station_24.php?id=76"><b>&nbsp;&nbsp;JARRIER, 1200m</b></a></li>
+                            <li><a href="/station_24.php?id=114"><b>&nbsp;&nbsp;GRANIER, 1260m</b></a></li>
+                            <li><a href="/station_24.php?id=163"><b>&nbsp;&nbsp;MONTVALEZAN, 1270m</b></a></li>
+                            <li><a href="/station_24.php?id=110"><b>&nbsp;&nbsp;OBS. ASTRO. DES BAUGES, 1300m</b></a></li>
+                            <li><a href="/station_24.php?id=155"><b>&nbsp;&nbsp;JARRIER, 1330m</b></a></li>
+                            <li><a href="/station_24.php?id=191"><b>&nbsp;&nbsp;VILLAREMBERT, 1430m</b></a></li>
+                            <li><a href="/station_24.php?id=13"><b>&nbsp;&nbsp;STE-FOY-TARENTAISE, 1582m</b></a></li>
+                            <li><a href="/station_24.php?id=34"><b>&nbsp;&nbsp;BESSANS, 1730m</b></a></li>
+                            <li><a href="/station_24.php?id=807"><b>&nbsp;&nbsp;LA GIETTAZ, 1812m</b></a></li>
+                            <li><a href="/station_24.php?id=93"><b>&nbsp;&nbsp;VAL-D'IS&Egrave;RE, 1850m</b></a></li>
+                            <li><a href="/station_24.php?id=175"><b>&nbsp;&nbsp;LA ROSI&Egrave;RE, 1860m</b></a></li>
+                            <li><a href="/station_24.php?id=810"><b>&nbsp;&nbsp;LA L&Eacute;CH&Egrave;RE, 1924m</b></a></li>
+                            <li><a href="/station_24.php?id=118"><b>&nbsp;&nbsp;VAL-D'ARLY, 2050m</b></a></li>
+                            <li><a href="/station_24.php?id=184"><b>&nbsp;&nbsp;LAC DU LOU, 2050</b></a></li>
+                            <li><a href="/station_24.php?id=805"><b>&nbsp;&nbsp;VAL-THORENS, 2280m</b></a></li>
+                            <li><a href="/station_24.php?id=806"><b>&nbsp;&nbsp;PRALOGNAN-LA-VANOISE, 2419m</b></a></li>
+                            <li><a href="/station_24.php?id=809"><b>&nbsp;&nbsp;BONNEVAL-SUR-ARC, 2480m</b></a></li>
+                            <li><a href="/station_24.php?id=811"><b>&nbsp;&nbsp;TIGNES, 2869m</b></a></li>
+                            <li><a href="/station_24.php?id=167"><b>&nbsp;&nbsp;GLACIER-GD-PISAILLAS, 3119m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;74-HAUTE-SAVOIE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=702"><b>&nbsp;&nbsp;VALLIERES, 320m</b></a></li>
+                            <li><a href="/station_24.php?id=2000"><b>&nbsp;&nbsp;RUMILLY, 330m</b></a></li>
+                            <li><a href="/station_24.php?id=142"><b>&nbsp;&nbsp;SCIEZ-SUR-L&Eacute;MAN, 370m</b></a></li>
+                            <li><a href="/station_24.php?id=11"><b>&nbsp;&nbsp;SCIEZ-SUR-L&Eacute;MAN, 390m</b></a></li>
+                            <li><a href="/station_24.php?id=703"><b>&nbsp;&nbsp;FRANGY, 395m</b></a></li>
+                            <li><a href="/station_24.php?id=708"><b>&nbsp;&nbsp;COPPONEX, 445m</b></a></li>
+                            <li><a href="/station_24.php?id=718"><b>&nbsp;&nbsp;ANNECY, 450m</b></a></li>
+                            <li><a href="/station_24.php?id=130"><b>&nbsp;&nbsp;MARIGNIER, 470m</b></a></li>
+                            <li><a href="/station_24.php?id=10"><b>&nbsp;&nbsp;CREMPIGNY, 500m</b></a></li>
+                            <li><a href="/station_24.php?id=704"><b>&nbsp;&nbsp;BONNEGUETE, 515m</b></a></li>
+                            <li><a href="/station_24.php?id=171"><b>&nbsp;&nbsp;ARCHAMPS, 625m</b></a></li>
+                            <li><a href="/station_24.php?id=98"><b>&nbsp;&nbsp;TANINGES, 635m</b></a></li>
+                            <li><a href="/station_24.php?id=701"><b>&nbsp;&nbsp;DROISY, 670m</b></a></li>
+                            <li><a href="/station_24.php?id=168"><b>&nbsp;&nbsp;SEYTHENEX, 780m</b></a></li>
+                            <li><a href="/station_24.php?id=709"><b>&nbsp;&nbsp;ANDILLY, 800m</b></a></li>
+                            <li><a href="/station_24.php?id=140"><b>&nbsp;&nbsp;VILLY-LE-BOUVERET, 791m</b></a></li>
+                            <li><a href="/station_24.php?id=36"><b>&nbsp;&nbsp;AVIERNOZ, 800m</b></a></li>
+                            <li><a href="/station_24.php?id=115"><b>&nbsp;&nbsp;LA ROCHE-SUR-FORON, 835m</b></a></li>
+                            <li><a href="/station_24.php?id=102"><b>&nbsp;&nbsp;PASSY, 890m</b></a></li>
+                            <li><a href="/station_24.php?id=121"><b>&nbsp;&nbsp;VERCHAIX, 895m</b></a></li>
+                            <li><a href="/station_24.php?id=23"><b>&nbsp;&nbsp;LE SAPPEY, 900m</b></a></li>
+                            <li><a href="/station_24.php?id=24"><b>&nbsp;&nbsp;THYEZ - SUR LE COUX, 970m</b></a></li>
+                            <li><a href="/station_24.php?id=166"><b>&nbsp;&nbsp;MORZINE, 995m</b></a></li>
+                            <li><a href="/station_24.php?id=81"><b>&nbsp;&nbsp;CHAMONIX, 1029m</b></a></li>
+                            <li><a href="/station_24.php?id=19"><b>&nbsp;&nbsp;LA CHAPELLE-D'A., 1030m</b></a></li>
+                            <li><a href="/station_24.php?id=37"><b>&nbsp;&nbsp;ST SIXT - ORANGE, 1100m</b></a></li>
+                            <li><a href="/station_24.php?id=39"><b>&nbsp;&nbsp;ARACHES-LA-FRASSE, 1120m</b></a></li>
+                            <li><a href="/station_24.php?id=73"><b>&nbsp;&nbsp;CRETS-DU-SALEVE, 1300m</b></a></li>
+                            <li><a href="/station_24.php?id=120"><b>&nbsp;&nbsp;POINTE-D'HIRMENTAZ, 1610m</b></a></li>
+                            <li><a href="/station_24.php?id=196"><b>&nbsp;&nbsp;AVORIAZ-SERRAUSSAIX, 1770m</b></a></li>
+                            <li><a href="/station_24.php?id=197"><b>&nbsp;&nbsp;AVORIAZ-PLATEAU, 1810m</b></a></li>
+                            <li><a href="/station_24.php?id=195"><b>&nbsp;&nbsp;AVORIAZ-ARARE, 2190m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;83-VAR</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=96"><b>&nbsp;&nbsp;MONT LACHENS, 1680m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;84-VAUCLUSE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=54"><b>&nbsp;&nbsp;ORANGE, 44m</b></a></li>
+                            <li><a href="/station_24.php?id=905"><b>&nbsp;&nbsp;BOLL&Egrave;NE, 56m</b></a></li>
+                            <li><a href="/station_24.php?id=71"><b>&nbsp;&nbsp;ISLE SUR LA SORGUE, 57m</b></a></li>
+                            <li><a href="/station_24.php?id=91"><b>&nbsp;&nbsp;ST-SATURNIN-LES-AVIGNON, 60m</b></a></li>
+                            <li><a href="/station_24.php?id=95"><b>&nbsp;&nbsp;PERTUIS, 206m</b></a></li>
+                            <li><a href="/station_24.php?id=901"><b>&nbsp;&nbsp;VALR&Eacute;AS, 218m</b></a></li>
+                            <li><a href="/station_24.php?id=69"><b>&nbsp;&nbsp;ENTRECHAUX, 305m</b></a></li>
+                            <li><a href="/station_24.php?id=902"><b>&nbsp;&nbsp;VISAN, 360m</b></a></li>
+                            <li><a href="/station_24.php?id=56"><b>&nbsp;&nbsp;GRAMBOIS, 385m</b></a></li>
+                            <li><a href="/station_24.php?id=706"><b>&nbsp;&nbsp;SAINT-CHRISTOL, 843m</b></a></li>
+                            <li><a href="/station_24.php?id=119"><b>&nbsp;&nbsp;LAGARDE-D'APT, 1100m</b></a></li>
+                            <li><a href="/station_24.php?id=146"><b>&nbsp;&nbsp;MONT-SEREIN, 1386m</b></a></li>
+                            <li><a href="/station_24.php?id=851"><b>&nbsp;&nbsp;MONT-VENTOUX, 1911m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;CH-SUISSE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=162"><b>&nbsp;&nbsp;BOUVERET, 378m</b></a></li>
+                            <li><a href="/station_24.php?id=38"><b>&nbsp;&nbsp;VERSOIX, 385m</b></a></li>
+                            <li><a href="/station_24.php?id=12"><b>&nbsp;&nbsp;ST-TRIPHON, 441m</b></a></li>
+                            <li><a href="/station_24.php?id=60"><b>&nbsp;&nbsp;SAXON, 463m</b></a></li>
+                            <li><a href="/station_24.php?id=193"><b>&nbsp;&nbsp;CUGY, 705m</b></a></li>
+                            <li><a href="/station_24.php?id=1"><b>&nbsp;&nbsp;LEYSIN, 1360m</b></a></li>
+                            <li><a href="/station_24.php?id=125"><b>&nbsp;&nbsp;GRIMENTZ, 1710m</b></a></li>
+                            <li><a href="/station_24.php?id=45"><b>&nbsp;&nbsp;AROLLA, 2084m</b></a></li>
+                            <li><a href="/station_24.php?id=813"><b>&nbsp;&nbsp;VERBIER, 2659m</b></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>&nbsp;&nbsp;IT-ITALIE</b></a>
+                        <ul>
+                            <li><a href="/station_24.php?id=90"><b>&nbsp;&nbsp;BUTTIGLIERA-ALTA, 414m</b></a></li>
+                            <li><a href="/station_24.php?id=31"><b>&nbsp;&nbsp;SAUZE-D'OULX, 1510m</b></a></li>
+                            <li><a href="/station_24.php?id=89"><b>&nbsp;&nbsp;OSTANA, 1630m</b></a></li>
+                            <li><a href="/station_24.php?id=63"><b>&nbsp;&nbsp;PETIT-SAINT-BERNARD, 2188m</b></a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+    </li>
+    <li><a href="#" >CLIMATOLOGIE</a>
+        <ul style="z-index:2">
+                <li><a href="/cli_index.php?tab=cli_jour"><b>&nbsp;&nbsp;CARTE CLIMATO JOUR</b></a></li>
+                <li><a href="/cli_index.php?tab=cli_mois"><b>&nbsp;&nbsp;CARTE CLIMATO MOIS</b></a></li>
+                <li><a href="cli_index.php?tab=cli_tab"><b>&nbsp;&nbsp;TABLEAU CLIMATO MOIS</b></a></li>
+                <li><a href="/cli_index.php?tab=cli_annee"><b>&nbsp;&nbsp;CARTE CLIMATO ANNUELLE</b></a></li>
+                <li><a href="cli_index.php?tab=cli_tab_annee"><b>&nbsp;&nbsp;TABLEAU CLIMATO ANNUELLE</b></a></li>
+                <li><a href="cli_index.php?tab=cli_comp"><b>&nbsp;&nbsp;COMPARATIF STATIONS</b></a></li>
+        </ul>
+    </li>
+
+	<li><a href="#" >WEBCAMS</a>
+        <ul style="z-index:2">
+            <li><a href="/weborama.php"><b>&nbsp;&nbsp;PANORAMA</b></a></li>
+        </ul>
+    </li>
+    <li><a href="#" >MEMBRES</a>
+        <ul style="z-index:2">
+            <li><a href="/adherent.php"><b>&nbsp;&nbsp;ESPACE MEMBRES</b></a></li> 
+            <li><a href="/communication.php"><b>&nbsp;&nbsp;INFORMATIONS MEMBRES</b></a></li> 
+            <li><a href="/tableau_bord.php"><b>&nbsp;&nbsp;TABLEAU DE BORD STATION</b></a></li>
+            <li><a href="/telechargement_station.php"><b>&nbsp;&nbsp;TELECHARGEMENT</b></a></li>
+            <li><a href="/prive_ca/accueil.php"><b>&nbsp;&nbsp;ESPACE PRIV&Eacute;</b></a></li>
+        </ul>
+    </li>                                     
+    <li><a href="#" >ROMMA</a>
+        <ul style="z-index:2">
+            <li><a href="/association.php"><b>&nbsp;&nbsp;PR&Eacute;SENTATION</b></a></li>
+            <li><a href="/adhesion.php"><b>&nbsp;&nbsp;ADH&Eacute;RER</b></a></li>
+            <li><a href="/statuts.php"><b>&nbsp;&nbsp;STATUTS</b></a></li>
+            <li><a href="/reglement.php"><b>&nbsp;&nbsp;R&Eacute;GLEMENT INT&Eacute;RIEUR</b></a></li>
+            <li><a href="/partenaire.php" ><b>&nbsp;&nbsp;NOS PARTENAIRES</b></a></li>
+            <li><a href="/nos_stations.php" ><b>&nbsp;&nbsp;NOS STATIONS</b></a></li>
+            <li><a href="/goodies.php" ><b>&nbsp;&nbsp;LES GOODIES</b></a></li>
+            <li><a href="/contact.php"><b>&nbsp;&nbsp;CONTACT</b></a></li>
+        </ul>
+    </li>
+    <li><a href="#" >PUBLICATIONS</a>
+        <ul style="z-index:2">
+            <li><a href="/publications.php"><b>&nbsp;&nbsp;BILANS CLIMATIQUES</b></a></li>
+        </ul>
+    </li>
+    <li><a href="/carte00_tab.php?mobile=1">MOBILE</a></li>
+    <a href="https://www.instagram.com/association_romma" target="_blank"><img src="../images/instagram2.png" style="float:right;" width=25/></a>
+    <a href="https://twitter.com/ROMMA_asso" target="_blank"><img src="../images/twitter1.png" style="float:right;" width=25/></a>
+    <a href="http://www.facebook.com/pages/ROMMA/161724317187552" target="_blank"><img src="../images/facebook3.png" style="float:right;" width=25/></a>
+</ul>
+<script type="text/javascript">
+    initMenu();
+</script>    </div>
+     <div id="top">
+        <table width=100% border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width=100% align="left" valign="bottom">
+                <div id="affichage_header">
+                    <!-- <small>Le site rencontre actuellement des difficultés d'affichage. Nous mettons tout en oeuvre pour les résoudre. Merci d'avance de nous en excuser.</small><br/> -->
+                    <b>ROMMA</b> est une association bénévole à but non lucratif. <span id="soutien"><strong><font color="#008000">Votre soutien est indispensable</font> </strong> : <a href="http://www.romma.fr/adhesion.php">ADHERER à ROMMA</a> ou <a href="https://www.helloasso.com/associations/romma/adhesions/adhesion-a-romma">FAIRE un DON</a></span>
+                </div>
+            </td>
+
+        </tr>
+        </table>
+     </div>
+<div class="colonne left">
+    <div id="rommatabs">
+        <ul >
+            <li><a href="carte00_tab_zoom.php"><span>Carte Obs</span></a></li>
+            <li><a href="carte00_tab.php"><span>Carte Fixe</span></a></li>
+            <li><a href="./tabobs_tab.php"><span>Tab Obs</span></a></li>
+            <li><a href="./radar_tab.php"><span>Radar</span></a></li>
+            <li><a href="./sat_tab.php"><span>Sat</span></a></li>
+        </ul>
+    </div>
+    <br />
+</div>
+<div class="colonne right">
+    <h3>Twitter</h3>
+    <a class="twitter-timeline" data-width="316" data-height="597" href="https://twitter.com/ROMMA_asso?ref_src=twsrc%5Etfw">Tweets by ROMMA_asso</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <h3>Facebook</h3>
+    <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/ROMMA-161724317187552&tabs=timeline&width=316&height=597&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="316" height="597" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+ </div>
+<br/>
+<p id="footer">Merci de respecter notre travail bénévole et de ne pas reproduire notre site internet et/ou nos données sans nous prévenir | <a href="mailto:contact@romma.fr">Contact</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="http://www.xiti.com/xiti.asp?s=389205" title="WebAnalytics" target="_top">
+            <script type="text/javascript">
+            <!--                                                                                  
+            Xt_param = 's=389205&p=accueil';
+            try {Xt_r = top.document.referrer;}
+            catch(e) {Xt_r = document.referrer; }
+            Xt_h = new Date();
+            Xt_i = '<img width="80" height="15" border="0" alt="" ';
+            Xt_i += 'src="http://logv9.xiti.com/g.xiti?'+Xt_param;
+            Xt_i += '&hl='+Xt_h.getHours()+'x'+Xt_h.getMinutes()+'x'+Xt_h.getSeconds();
+            if(parseFloat(navigator.appVersion)>=4)
+            {Xt_s=screen;Xt_i+='&r='+Xt_s.width+'x'+Xt_s.height+'x'+Xt_s.pixelDepth+'x'+Xt_s.colorDepth;}
+            document.write(Xt_i+'&ref='+Xt_r.replace(/[<>"]/g, '').replace(/&/g, '$')+'" title="Internet Audience">');
+            //-->
+            </script>
+            <noscript>
+            Mesure d'audience ROI statistique webanalytics par <img width="80" height="15" src="http://logv9.xiti.com/g.xiti?s=389205&p=accueil" alt="WebAnalytics" />
+            </noscript></a>
+    </p>
+</div>
+
+<script type="text/javascript">
+    initMenu();
+    document.getElementById('bandeau_menu3').style.visibility='visible';
+    $("#soutien").blink();
+</script>
+Serveur OMMA
+</body>
+</html>

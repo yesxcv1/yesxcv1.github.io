@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Create, optimize, and deploy stunning cross-browser web maps with the OpenLayers JavaScript web mapping library">
+<meta property="og:description" content="Create, optimize, and deploy stunning cross-browser web maps with the OpenLayers JavaScript web mapping library">
+<meta property="og:title" content="OpenLayers 2.10 Beginner&#039;s Guide | Packt" />
+<meta property="og:type" content="books.book" />
+<meta property="og:url" content="https://www.packtpub.com/product/openlayers-2-10-beginner-s-guide/9781849514125" />
+<meta property="og:image" content="https://static.packt-cdn.com/products/9781849514125/cover/smaller" />
+<meta property="og:site_name" content="Packt">
+<meta property="books:isbn" content="9781849514125">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="OpenLayers 2.10 Beginner&#039;s Guide | Packt" />
+<meta name="twitter:description" content="Create, optimize, and deploy stunning cross-browser web maps with the OpenLayers JavaScript web mapping library" />
+<meta name="twitter:site" content="@PacktPub" />
+<meta name="twitter:image" content="https://static.packt-cdn.com/products/9781849514125/cover/smaller" />
+<meta name="twitter:creator" content="@PacktPub" />
+<link rel="canonical" href="https://www.packtpub.com/product/openlayers-2-10-beginner-s-guide/9781849514125" />
+<link rel="shortcut icon" href="https://d2aov160eccqlv.cloudfront.net/271739eb287c43adb004792095a0b2fc/images/7e26cb80ef4e68f870f1e40b5ef46584.ico">
+<title>OpenLayers 2.10 Beginner&#039;s Guide | Packt</title>
+
+<meta name="csrf-token" content="cP6hjWg65V33EUer27I8AOldsD7aj1dBHYLnknr0">
+<script>
+window.dataLayer = window.dataLayer || [];
+dataLayer = [{"user":{"loginState":"Logged Out"},"productDetail":{"ecommerce":{"currencyCode":"USD","detail":{"products":[{"name":"OpenLayers 2.10 Beginner's Guide","id":"9781849514125","price":44.99,"original_price":44.99,"variant":"PRINT","category":"web-development","price_after_promo_code":44.99},{"name":"OpenLayers 2.10 Beginner's Guide","id":"9781849514132","price":26.99,"original_price":26.99,"variant":"EBOOK","category":"web-development","price_after_promo_code":5}]}}}}];
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KHLZ7JF');</script>
+<script type="text/javascript">
+        window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+
+        if(!window.heap.appid){
+            heap.load("34805961");
+        }
+    </script>
+
+<script type="text/javascript">
+        var HeapUserId = "";
+
+        if(typeof HeapUserId === "string" && HeapUserId !== "undefined") {
+            window.heap.identify(HeapUserId);
+        }
+    </script>
+<link rel="stylesheet" href="/css/bootstrap.css?id=ce8e8ecb2ee5ff0c4b76">
+<link rel="stylesheet" href="/css/app.css?id=90bb4ca4f87b6941978e">
+<script src="/js/app.js?id=5af5af514f3727b315f9"></script>
+</head>
+<body>
+<div id="app">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHLZ7JF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav id="primary-navigation" class="navigation">
+<div class="container-fluid navigation__inner">
+<div class="navigation__left">
+<div class="dropdown hidden-md hidden-lg">
+<button class="dropbtn navbar-toggle btn btn-clear navbar-menu-toggle">
+<i class="fa fa-bars icon-menu__icon" aria-hidden="true"></i>
+</button>
+<div class="dropdown-content hidden-md hidden-lg">
+<ul>
+<li><a href="https://www.packtpub.com/all-products" target="_blank" class="menu__link">Browse All</a></li>
+<li><a href="https://www.packtpub.com/free-learning" target="_blank" class="menu__link">Free Learning</a></li>
+<li><a href="https://account.packtpub.com/login?returnUrl=referrer" target="_blank" class="menu__link">Sign in</a></li>
+<li><a href="https://subscribe.packtpub.com" target="_blank" class="menu__link nav-link-subscribe-mobile btn-primary">Subscribe</a></li>
+</ul>
+</div>
+</div>
+<a href="https://www.packtpub.com/" id="main-logo" title="Home">
+<img class="logo" src="/images/logo.png" alt="Packt Logo" />
+</a>
+<form action="https://www.packtpub.com/catalogsearch/result" class="search-bar">
+<input type="text" name="q" class="search-bar__input" placeholder=" Search...">
+<button type="submit" class="search-bar__button">
+<i class="fa fa-search" aria-hidden="true"></i>
+</button>
+</form>
+<div class="header__icons hidden-md hidden-lg hidden-xlg">
+<div class="search-icon">
+<button type="button" class="navbar-toggle btn">
+<i class="fa fa-search search-mobile" aria-hidden="true"></i>
+</button>
+<div class="search-icon-bar hidden-md hidden-lg hidden-xlg">
+<form action="https://www.packtpub.com/catalogsearch/result" class="">
+<input type="text" name="q" class="search-icon-bar__input" placeholder=" Search...">
+<button type="submit" class="search-icon-bar__button">
+<i class="fa fa-search" aria-hidden="true"></i>
+</button>
+</form>
+</div>
+</div>
+<button type="button" class="navbar-toggle btn">
+<a href="https://account.packtpub.com/account/details" target="_blank"><i class="fa fa-user" aria-hidden="true"></i></a>
+</button>
+</div>
+</div>
+<div class="navigation__right">
+<ul class="menu">
+<li class="menu__item">
+<a href="https://www.packtpub.com/all-products" target="_blank" class="menu__link">Browse All</a>
+</li>
+<li class="menu__item">
+<a href="https://www.packtpub.com/free-learning" target="_blank" class="menu__link">Free Learning</a>
+</li>
+<li class="menu__item">
+<a href="https://account.packtpub.com/login?returnUrl=referrer" class="menu__link">Sign In</a>
+</li>
+<li class="menu__item menu__link">
+<a href="https://subscribe.packtpub.com" target="_blank" class="nav-link-subscribe btn-primary">Subscribe</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="product" itemscope itemtype="http://schema.org/Product">
+<header class="product__header">
+<link itemprop="url" href="https://www.packtpub.com/product/openlayers-2-10-beginner-s-guide/9781849514125">
+<div class="container-full">
+<div class="product__info">
+<div class="breadcrumbs">
+<span class="hidden-xxs">
+<a href="https://www.packtpub.com/" class="breadcrumbs__link">Home</a>
+<img src="/images/chevron--breadcrumb.svg" class="breadcrumbs__seperator " />
+</span>
+<span>
+<a href="https://www.packtpub.com/web-development?released=Available" class="breadcrumbs__link">Web-development</a>
+<img src="/images/chevron--breadcrumb.svg" class="breadcrumbs__seperator " />
+</span>
+<span class="breadcrumbs__last">OpenLayers 2.10 Beginner&#039;s Guide</span>
+</div>
+<div class="grid product-info main-product">
+<div class="product__block">
+<div class="image">
+<div class="product-info__image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+<img class="product-image" src="https://static.packt-cdn.com/products/9781849514125/cover/smaller" alt="OpenLayers 2.10 Beginner&#039;s Guide" itemprop="url" />
+</div>
+<div style="display:none" class="product-info__actions">
+<button class="button button--small button--outline button--white button--share">Share</button>
+<button class="button button--small button--outline button--white button--playlist">Add to playlist</button>
+</div>
+</div>
+<div class="title">
+<div class="product-info__content">
+<h3 class="product-info__title" itemprop="name">OpenLayers 2.10 Beginner&#039;s Guide</h3>
+</div>
+</div>
+<div class="price">
+<div class="product-info__content">
+<span class="product-info__author">
+By Erik Hazzard
+</span>
+<ul class="price-list" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+<li class="price-list__item">
+<span class="price-list__price free">$5 for 5 months</span>
+<span class="price-list__name">
+<button class="more-info" data-tippy data-tippy-content="Access this title, plus 7,500 other titles for just $5"></button>
+Subscribe
+</span>
+<span class="price-list__link"><a href="/checkout/subscription/packt-monthly-five-month-offer">Access now</a></span>
+</li>
+ <li class="price-list__item">
+<span class="price-list__price">
+$44.99
+</span>
+<span class="price-list__name">
+<button class="more-info" data-tippy data-tippy-content="Get a paperback copy of the book delivered to you"></button>
+Print + eBook
+</span>
+<span class="price-list__link">
+<a href="https://www.packtpub.com/buyitem/index/index/sku/9781849514125">
+Buy
+</a>
+</span>
+</li>
+<li class="price-list__item" itemprop="priceCurrency" content="USD">
+<span class="price-list__price">
+<span class="price-list__special" itemprop="price" content="5">
+$5.00
+</span>
+<span class="price-list__old">Was
+<span class="price-list__old__line-through">
+$26.99
+</span>
+</span>
+</span>
+<span class="price-list__name">
+<button class="more-info" data-tippy data-tippy-content="All of our eBooks are supplied in PDF, EPUB, MOBI formats and are always DRM free"></button>
+eBook
+</span>
+<span class="price-list__link">
+<a href="https://www.packtpub.com/buyitem/index/index/sku/9781849514132">
+Buy
+</a>
+</span>
+</li>
+</ul>
+<ul class="bullet-list">
+<li>Instant online access to over 7,500+ books and videos</li>
+<li>Constantly updated with 100+ new titles each month</li>
+<li>Breadth and depth in over 1,000+ technologies</li>
+</ul>
+<div class="product-info__buttons">
+<a href="/checkout/subscription/packt-monthly-five-month-offer" class="button button--main">Access now</a>
+<a href="https://account.packtpub.com/login?returnUrl=referrer" class="button button--outline button--white">Or Sign In</a> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="product__chapters" id="style-white">
+<ol class="accordion accordion--chapters" id="accordion-toc">
+<li class="accordion__item">
+<a href="#" class="accordion__title " data-toggle="collapse" data-target="#collapse0" aria-expanded=" true " aria-controls="collapse0" onclick="return false;">
+<h5>Getting Started with OpenLayers</h5>
+</a>
+<div class="accordion__content collapse  show " id="collapse0" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1" data-chapter="0" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Getting Started with OpenLayers
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec11/what-is-openlayers" data-chapter="0" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+What is OpenLayers?
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec12/what-technically-is-openlayers" data-chapter="0" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+What, technically, is OpenLayers?
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec13/anatomy-of-a-web-mapping-application" data-chapter="0" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+Anatomy of a web-mapping application
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec14/relation-to-google-yahoo-and-other-mapping-apis" data-chapter="0" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Relation to Google / Yahoo! / and other mapping APIs
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec15/the-openlayers-website" data-chapter="0" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+The OpenLayers website
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec16/time-for-action-downloading-openlayers" data-chapter="0" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Time for action – downloading OpenLayers
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec17/time-for-action-creating-your-first-map" data-chapter="0" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Time for action – creating your first map
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec18/how-the-code-works" data-chapter="0" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+How the code works
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec19/behind-the-scenes-object-oriented-programming-oop" data-chapter="0" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+Behind the scenes—Object Oriented Programming (OOP)
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec20/time-for-action-play-madlibs" data-chapter="0" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Time for Action – play MadLibs
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec21/now-what" data-chapter="0" data-section="11" class="links__item toc-index" onclick="return pp.navigate(this, 11);" target="_blank">
+Now what?
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec22/where-to-go-for-help" data-chapter="0" data-section="12" class="links__item toc-index" onclick="return pp.navigate(this, 12);" target="_blank">
+Where to go for help
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec23/openlayers-source-code-repository" data-chapter="0" data-section="13" class="links__item toc-index" onclick="return pp.navigate(this, 13);" target="_blank">
+OpenLayers source code repository
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec24/summary" data-chapter="0" data-section="14" class="links__item toc-index" onclick="return pp.navigate(this, 14);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse1" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Squashing Bugs With Firebug</h5>
+</a>
+<div class="accordion__content collapse " id="collapse1" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2" data-chapter="1" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Squashing Bugs With Firebug
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec25/what-is-firebug" data-chapter="1" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+What is Firebug?
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec26/setting-up-firebug" data-chapter="1" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Setting up Firebug
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec27/time-for-action-downloading-firebug" data-chapter="1" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+Time for Action – downloading Firebug
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec28/firebug-controls" data-chapter="1" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Firebug controls
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec29/panel-conclusion" data-chapter="1" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Panel conclusion
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec30/using-the-console-panel" data-chapter="1" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Using the Console panel
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec31/time-for-action-executing-code-in-the-console" data-chapter="1" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Time for Action – executing code in the Console
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec32/time-for-action-creating-object-literals" data-chapter="1" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Time for Action – creating object literals
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec33/time-for-action-interacting-with-a-map" data-chapter="1" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+Time for Action – interacting with a map
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/2/ch02lvl1sec34/summary" data-chapter="1" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse2" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>The &#039;Layers&#039; in OpenLayers</h5>
+</a>
+<div class="accordion__content collapse " id="collapse2" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3" data-chapter="2" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+The &#039;Layers&#039; in OpenLayers
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec35/what-s-a-layer" data-chapter="2" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+What&#039;s a layer?
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec36/layers-in-openlayers" data-chapter="2" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Layers in OpenLayers
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec37/time-for-action-creating-a-map-with-multiple-layers" data-chapter="2" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+Time for Action – creating a map with multiple layers
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec38/creating-layer-objects" data-chapter="2" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Creating layer objects
+</a>
+</li>
+<li>
+ <a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec39/time-for-action-configuring-the-options-parameter" data-chapter="2" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Time for Action – configuring the options parameter
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec40/configuring-layer-options" data-chapter="2" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Configuring layer options
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec41/map-tiles" data-chapter="2" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Map tiles
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec42/available-layer-properties" data-chapter="2" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Available layer properties
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec43/the-openlayers-layer-class" data-chapter="2" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+The OpenLayers.Layer class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec44/other-layer-types" data-chapter="2" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Other layer types
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec45/time-for-action-creating-a-google-maps-layer" data-chapter="2" data-section="11" class="links__item toc-index" onclick="return pp.navigate(this, 11);" target="_blank">
+Time for Action – creating a Google Maps layer
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec46/time-for-action-using-the-image-layer" data-chapter="2" data-section="12" class="links__item toc-index" onclick="return pp.navigate(this, 12);" target="_blank">
+Time for Action – using the image layer
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec47/accessing-layer-objects" data-chapter="2" data-section="13" class="links__item toc-index" onclick="return pp.navigate(this, 13);" target="_blank">
+Accessing layer objects
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec48/time-for-action-accessing-map-layers" data-chapter="2" data-section="14" class="links__item toc-index" onclick="return pp.navigate(this, 14);" target="_blank">
+Time for Action – accessing map.layers
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec49/time-for-action-accessing-layer-objects-in-firebug" data-chapter="2" data-section="15" class="links__item toc-index" onclick="return pp.navigate(this, 15);" target="_blank">
+Time for Action – accessing layer objects in Firebug
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec50/layer-class-methods" data-chapter="2" data-section="16" class="links__item toc-index" onclick="return pp.navigate(this, 16);" target="_blank">
+Layer class methods
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec51/time-for-action-defining-a-global-layer-object-variable" data-chapter="2" data-section="17" class="links__item toc-index" onclick="return pp.navigate(this, 17);" target="_blank">
+Time for Action – defining a global layer object variable
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/3/ch03lvl1sec52/summary" data-chapter="2" data-section="18" class="links__item toc-index" onclick="return pp.navigate(this, 18);" target="_blank">
+Summary
+</a>
+ </li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse3" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Wrapping Our Heads Around Projections</h5>
+</a>
+<div class="accordion__content collapse " id="collapse3" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4" data-chapter="3" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Wrapping Our Heads Around Projections
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4/ch04lvl1sec53/map-projections" data-chapter="3" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+Map projections
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4/ch04lvl1sec54/time-for-action-using-different-projection-codes" data-chapter="3" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Time for Action – using different projection codes
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4/ch04lvl1sec55/time-for-action-determining-lonlat-coordinates" data-chapter="3" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+Time for Action – determining LonLat coordinates
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4/ch04lvl1sec56/openlayers-projection-class" data-chapter="3" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+OpenLayers projection class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4/ch04lvl1sec57/transforming-projections" data-chapter="3" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Transforming projections
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4/ch04lvl1sec58/time-for-action-coordinate-transforms" data-chapter="3" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Time for Action – coordinate transforms
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4/ch04lvl1sec59/time-for-action-setting-up-proj4js-org" data-chapter="3" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Time for Action – setting up Proj4js.org
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/4/ch04lvl1sec60/summary" data-chapter="3" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse4" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Interacting with Third Party APIs</h5>
+</a>
+<div class="accordion__content collapse " id="collapse4" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5" data-chapter="4" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Interacting with Third Party APIs
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec61/third-party-mapping-apis" data-chapter="4" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+Third party mapping APIs
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec62/google-maps" data-chapter="4" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Google Maps
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec63/time-for-action-using-goole-maps-v3-standard-way" data-chapter="4" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+Time for Action – using Goole Maps V3 (standard way)
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec64/time-for-action-creating-a-google-map-layer-with-v2-deprecated" data-chapter="4" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Time for Action – creating a Google Map layer with V2 (Deprecated)
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec65/yahoo-maps-api" data-chapter="4" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Yahoo! Maps API
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec66/time-for-action-using-the-yahoo-maps-layer" data-chapter="4" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Time for Action – using the Yahoo! Maps Layer
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec67/microsoft-s-mapping-api" data-chapter="4" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Microsoft&#039;s mapping API
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec68/time-for-action-creating-a-bing-virtual-earth-layer" data-chapter="4" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Time for Action – creating a Bing/Virtual Earth Layer
+</a>
+</li>
+ <li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec69/openstreetmap" data-chapter="4" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+OpenStreetMap
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec70/time-for-action-creating-an-openstreetmap-layer" data-chapter="4" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Time for Action – creating an OpenStreetMap Layer
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec71/spherical-mercator" data-chapter="4" data-section="11" class="links__item toc-index" onclick="return pp.navigate(this, 11);" target="_blank">
+Spherical Mercator
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec72/time-for-action-using-spherical-mercator" data-chapter="4" data-section="12" class="links__item toc-index" onclick="return pp.navigate(this, 12);" target="_blank">
+Time for Action – using Spherical Mercator
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec73/using-google-maps-and-other-layers" data-chapter="4" data-section="13" class="links__item toc-index" onclick="return pp.navigate(this, 13);" target="_blank">
+Using Google Maps and other layers
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec74/time-for-action-creating-your-first-mashup" data-chapter="4" data-section="14" class="links__item toc-index" onclick="return pp.navigate(this, 14);" target="_blank">
+Time For Action – creating your first mashup
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/5/ch05lvl1sec75/summary" data-chapter="4" data-section="15" class="links__item toc-index" onclick="return pp.navigate(this, 15);" target="_blank">
+Summary
+</a>
+</li>
+ </ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse5" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Taking Control of Controls</h5>
+</a>
+<div class="accordion__content collapse " id="collapse5" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6" data-chapter="5" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Taking Control of Controls
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec76/what-are-controls" data-chapter="5" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+What are controls?
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec77/adding-controls-to-your-map" data-chapter="5" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Adding controls to your map
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec78/time-for-action-creating-a-map-with-no-controls" data-chapter="5" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+Time for Action – creating a map with no controls
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec79/time-for-action-adding-controls-to-a-map" data-chapter="5" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Time for Action – adding controls to a map
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec80/openlayers-control-class" data-chapter="5" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+ OpenLayers.Control class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec81/openlayers-control-subclasses" data-chapter="5" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+OpenLayers.Control subclasses
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec82/time-for-action-using-attributions" data-chapter="5" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Time for Action – using attributions
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec83/time-for-action-using-the-navigationhistory-control" data-chapter="5" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Time for Action – using the NavigationHistory control
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec84/panels" data-chapter="5" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+Panels
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec85/time-for-action-using-panels" data-chapter="5" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Time for Action – using Panels
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec86/creating-our-own-controls" data-chapter="5" data-section="11" class="links__item toc-index" onclick="return pp.navigate(this, 11);" target="_blank">
+Creating our own controls
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec87/creating-a-custom-button" data-chapter="5" data-section="12" class="links__item toc-index" onclick="return pp.navigate(this, 12);" target="_blank">
+Creating a custom button
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec88/time-for-action-creating-a-simple-button" data-chapter="5" data-section="13" class="links__item toc-index" onclick="return pp.navigate(this, 13);" target="_blank">
+Time for Action – creating a simple button
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec89/events" data-chapter="5" data-section="14" class="links__item toc-index" onclick="return pp.navigate(this, 14);" target="_blank">
+Events
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec90/time-for-action-creating-a-custom-type-toggle-control" data-chapter="5" data-section="15" class="links__item toc-index" onclick="return pp.navigate(this, 15);" target="_blank">
+Time for Action – creating a custom TYPE_TOGGLE control
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/6/ch06lvl1sec91/summary" data-chapter="5" data-section="16" class="links__item toc-index" onclick="return pp.navigate(this, 16);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse6" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Styling Controls</h5>
+</a>
+<div class="accordion__content collapse " id="collapse6" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/7" data-chapter="6" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Styling Controls
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/7/ch07lvl1sec92/what-is-css" data-chapter="6" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+What is CSS?
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/7/ch07lvl1sec93/time-for-action-using-external-css-files" data-chapter="6" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Time for Action – using external CSS files
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/7/ch07lvl1sec94/openlayers-and-css" data-chapter="6" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+OpenLayers and CSS
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/7/ch07lvl1sec95/time-for-action-styling-controls" data-chapter="6" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Time for Action – styling controls
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/7/ch07lvl1sec96/time-for-action-styling-the-layerswitcher-control" data-chapter="6" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Time for Action – styling the LayerSwitcher control
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/7/ch07lvl1sec97/other-resources" data-chapter="6" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Other resources
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/7/ch07lvl1sec98/summary" data-chapter="6" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse7" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Charting the Map Class</h5>
+</a>
+<div class="accordion__content collapse " id="collapse7" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8" data-chapter="7" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Charting the Map Class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec99/the-map-class" data-chapter="7" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+The Map class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec100/map-class-properties" data-chapter="7" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Map class properties
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec101/time-for-action-using-the-alloverlays-map-property" data-chapter="7" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+Time for Action – using the allOverlays Map property
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec102/time-for-action-setting-zoom-levels-and-maxextent" data-chapter="7" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Time for Action – setting zoom levels and maxExtent
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec103/time-for-action-using-resolutions-array" data-chapter="7" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Time for Action – using resolutions array
+</a>
+</li>
+<li>
+ <a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec104/time-for-action-using-min-and-max-resolution" data-chapter="7" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Time for Action – using Min and Max resolution
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec105/time-for-action-using-scales" data-chapter="7" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Time for Action – Using scales
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec106/time-for-action-working-with-pan-animations" data-chapter="7" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Time for Action – working with Pan animations
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec107/map-functions" data-chapter="7" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+Map functions
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec108/time-for-action-using-control-methods" data-chapter="7" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Time for Action – using control methods
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec109/time-for-action-using-coordinate-related-functions" data-chapter="7" data-section="11" class="links__item toc-index" onclick="return pp.navigate(this, 11);" target="_blank">
+Time for Action – using coordinate related functions
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec110/doing-stuff-with-events" data-chapter="7" data-section="12" class="links__item toc-index" onclick="return pp.navigate(this, 12);" target="_blank">
+Doing stuff with events
+</a>
+ </li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec111/time-for-action-using-eventlisteners" data-chapter="7" data-section="13" class="links__item toc-index" onclick="return pp.navigate(this, 13);" target="_blank">
+Time for Action – using eventListeners
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec112/time-for-action-working-with-map-events" data-chapter="7" data-section="14" class="links__item toc-index" onclick="return pp.navigate(this, 14);" target="_blank">
+Time for Action – working with Map events
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec113/multiple-maps" data-chapter="7" data-section="15" class="links__item toc-index" onclick="return pp.navigate(this, 15);" target="_blank">
+Multiple maps
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec114/time-for-action-using-multiple-map-objects" data-chapter="7" data-section="16" class="links__item toc-index" onclick="return pp.navigate(this, 16);" target="_blank">
+Time for Action – using multiple map objects
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec115/time-for-action-creating-a-multiple-map-and-custom-event-application" data-chapter="7" data-section="17" class="links__item toc-index" onclick="return pp.navigate(this, 17);" target="_blank">
+Time for Action – creating a multiple map and custom event application
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/8/ch08lvl1sec116/summary" data-chapter="7" data-section="18" class="links__item toc-index" onclick="return pp.navigate(this, 18);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse8" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Using Vector Layers</h5>
+</a>
+<div class="accordion__content collapse " id="collapse8" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9" data-chapter="8" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Using Vector Layers
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec117/what-is-the-vector-layer" data-chapter="8" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+What is the Vector Layer?
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec118/time-for-action-creating-a-vector-layer" data-chapter="8" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Time for Action – creating a Vector Layer
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec119/how-the-vector-layer-works" data-chapter="8" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+How the Vector Layer works
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec120/time-for-action-changing-the-renderers-array" data-chapter="8" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Time for Action – changing the Renderers array
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec121/vector-layer-class" data-chapter="8" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Vector Layer class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec122/time-for-action-adding-features" data-chapter="8" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Time for Action – adding features
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec123/time-for-action-destroying-features" data-chapter="8" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Time for Action – destroying features
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec124/time-for-action-working-with-feature-events" data-chapter="8" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Time For Action – working with feature events
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec125/vector-layer-class-events" data-chapter="8" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+Vector Layer class events
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec126/time-for-action-using-vector-layer-events" data-chapter="8" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Time For Action – using Vector Layer events
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec127/time-for-actions-working-with-more-events" data-chapter="8" data-section="11" class="links__item toc-index" onclick="return pp.navigate(this, 11);" target="_blank">
+Time For Actions – working with more events
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec128/geometry-and-feature-classes" data-chapter="8" data-section="12" class="links__item toc-index" onclick="return pp.navigate(this, 12);" target="_blank">
+Geometry and Feature classes
+</a>
+</li>
+<li>
+ <a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec129/time-for-action-using-geometry-class-methods" data-chapter="8" data-section="13" class="links__item toc-index" onclick="return pp.navigate(this, 13);" target="_blank">
+Time for Action – using Geometry class methods
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec130/time-for-action-using-the-selectfeature-control" data-chapter="8" data-section="14" class="links__item toc-index" onclick="return pp.navigate(this, 14);" target="_blank">
+Time For Action – using the SelectFeature control
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec131/the-vector-class-part-two" data-chapter="8" data-section="15" class="links__item toc-index" onclick="return pp.navigate(this, 15);" target="_blank">
+The Vector class, part two
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec132/time-for-action-creating-a-vector-layer" data-chapter="8" data-section="16" class="links__item toc-index" onclick="return pp.navigate(this, 16);" target="_blank">
+Time for Action – creating a Vector Layer
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl2sec235/using-the-vector-layer-without-a-protocol-class" data-chapter="8" data-section="17" class="links__item toc-index" onclick="return pp.navigate(this, 17);" target="_blank">
+Using the Vector Layer without a Protocol class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec133/time-for-action-using-the-format-and-strategy-classes-alone" data-chapter="8" data-section="18" class="links__item toc-index" onclick="return pp.navigate(this, 18);" target="_blank">
+Time for Action – using the Format and Strategy classes alone
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec134/format-class" data-chapter="8" data-section="19" class="links__item toc-index" onclick="return pp.navigate(this, 19);" target="_blank">
+Format class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec135/strategy-class" data-chapter="8" data-section="20" class="links__item toc-index" onclick="return pp.navigate(this, 20);" target="_blank">
+Strategy class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/9/ch09lvl1sec136/summary" data-chapter="8" data-section="21" class="links__item toc-index" onclick="return pp.navigate(this, 21);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse9" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Vector Layer Style Guide</h5>
+</a>
+<div class="accordion__content collapse " id="collapse9" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10" data-chapter="9" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Vector Layer Style Guide
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec137/styling-the-vector-layer" data-chapter="9" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+Styling the Vector Layer
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec138/time-for-action-applying-some-basic-styling" data-chapter="9" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Time For Action – applying some basic Styling
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec139/the-stylemap-class" data-chapter="9" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+The StyleMap class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec140/the-style-class" data-chapter="9" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+The Style class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec141/time-for-action-common-style-examples" data-chapter="9" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Time for Action – common style examples
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec142/attribute-replacement" data-chapter="9" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Attribute replacement
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec143/time-for-action-working-with-attribute-replacement" data-chapter="9" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Time For Action – working with attribute replacement
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec144/rules-and-filters" data-chapter="9" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Rules and filters
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec145/time-for-action-using-adduniquevaluerules" data-chapter="9" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+Time For Action – using addUniqueValueRules
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec146/rules-and-filters" data-chapter="9" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Rules and filters
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec147/time-for-action-using-rules-and-filters" data-chapter="9" data-section="11" class="links__item toc-index" onclick="return pp.navigate(this, 11);" target="_blank">
+Time for Action – using rules and filters
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec148/openlayers-rule-class" data-chapter="9" data-section="12" class="links__item toc-index" onclick="return pp.navigate(this, 12);" target="_blank">
+OpenLayers.Rule class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec149/openlayers-filter-class" data-chapter="9" data-section="13" class="links__item toc-index" onclick="return pp.navigate(this, 13);" target="_blank">
+OpenLayers.Filter class
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec150/time-for-action-figuring-out-logical-filters" data-chapter="9" data-section="14" class="links__item toc-index" onclick="return pp.navigate(this, 14);" target="_blank">
+Time For Action – figuring out logical filters
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/10/ch10lvl1sec151/summary" data-chapter="9" data-section="15" class="links__item toc-index" onclick="return pp.navigate(this, 15);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="accordion__item">
+<a href="#" class="accordion__title  collapsed " data-toggle="collapse" data-target="#collapse10" aria-expanded=" false " aria-controls="collapse0" onclick="return false;">
+<h5>Making Web Map Apps</h5>
+</a>
+<div class="accordion__content collapse " id="collapse10" data-parent="#accordion-toc">
+<ul class="links">
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11" data-chapter="10" data-section="0" class="links__item toc-index" onclick="return pp.navigate(this, 0);" target="_blank">
+Making Web Map Apps
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec152/development-strategies" data-chapter="10" data-section="1" class="links__item toc-index" onclick="return pp.navigate(this, 1);" target="_blank">
+Development strategies
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec153/creating-a-web-map-application-using-flickr" data-chapter="10" data-section="2" class="links__item toc-index" onclick="return pp.navigate(this, 2);" target="_blank">
+Creating a web map application using Flickr
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec154/time-for-action-getting-flickr-data" data-chapter="10" data-section="3" class="links__item toc-index" onclick="return pp.navigate(this, 3);" target="_blank">
+Time For Action – getting Flickr data
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec155/time-for-action-adding-data-to-your-map" data-chapter="10" data-section="4" class="links__item toc-index" onclick="return pp.navigate(this, 4);" target="_blank">
+Time for Action – adding data to your map
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec156/time-for-action-extract-style" data-chapter="10" data-section="5" class="links__item toc-index" onclick="return pp.navigate(this, 5);" target="_blank">
+Time for Action – extract style
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec157/turning-our-example-into-an-application" data-chapter="10" data-section="6" class="links__item toc-index" onclick="return pp.navigate(this, 6);" target="_blank">
+Turning our example into an application
+</a>
+</li>
+<li>
+ <a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec158/time-for-action-adding-some-interactivity" data-chapter="10" data-section="7" class="links__item toc-index" onclick="return pp.navigate(this, 7);" target="_blank">
+Time for Action – adding some interactivity
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec159/using-real-time-data-with-a-proxyhost" data-chapter="10" data-section="8" class="links__item toc-index" onclick="return pp.navigate(this, 8);" target="_blank">
+Using real time data with a ProxyHost
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec160/time-for-action-getting-dynamic-data" data-chapter="10" data-section="9" class="links__item toc-index" onclick="return pp.navigate(this, 9);" target="_blank">
+Time for Action – getting dynamic data
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec161/wrapping-up-the-application" data-chapter="10" data-section="10" class="links__item toc-index" onclick="return pp.navigate(this, 10);" target="_blank">
+Wrapping up the application
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec162/time-for-action-adding-dynamic-tags-to-your-map" data-chapter="10" data-section="11" class="links__item toc-index" onclick="return pp.navigate(this, 11);" target="_blank">
+Time For Action – adding dynamic tags to your map
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec163/deploying-an-application" data-chapter="10" data-section="12" class="links__item toc-index" onclick="return pp.navigate(this, 12);" target="_blank">
+Deploying an application
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec164/building-the-openlayers-library-file" data-chapter="10" data-section="13" class="links__item toc-index" onclick="return pp.navigate(this, 13);" target="_blank">
+Building the OpenLayers Library file
+ </a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec165/time-for-action-building-a-config-file" data-chapter="10" data-section="14" class="links__item toc-index" onclick="return pp.navigate(this, 14);" target="_blank">
+Time for Action – building a Config file
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec166/time-for-action-running-the-build-script" data-chapter="10" data-section="15" class="links__item toc-index" onclick="return pp.navigate(this, 15);" target="_blank">
+Time for Action – running the Build script
+</a>
+</li>
+<li>
+<a href="https://subscription.packtpub.com/book/web-development/9781849514125/11/ch11lvl1sec167/summary" data-chapter="10" data-section="16" class="links__item toc-index" onclick="return pp.navigate(this, 16);" target="_blank">
+Summary
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</header>
+<section class="product__overview">
+<div class="container-full container-full--small overview">
+<div class="row">
+<div class="col-sm-8">
+<div class="overview__excerpt">
+<h4>About this book</h4>
+<div class="overview__body" itemprop="description">
+<p>Web mapping is the process of designing, implementing, generating, and delivering maps on the World Wide Web and its products. OpenLayers is a powerful, community driven, open source, pure JavaScript web mapping library. With it, you can easily create your own web map mashup using WMS, Google Maps, and a myriad of other map backends. Interested in knowing more about OpenLayers? This book is going to help you learn OpenLayers from scratch.</p>
+<p><em>OpenLayers 2.10 Beginner's Guide</em> will walk you through the OpenLayers library in the easiest and most efficient way possible. The core components of OpenLayers are covered in detail, with examples, structured so that you can easily refer back to them later.</p>
+<p>The book starts off by introducing you to the OpenLayers library and ends with developing and deploying a full-fledged web map application, guiding you through every step of the way.</p>
+<p>Throughout the book, you'll learn about each component of the OpenLayers library. You'll work with backend services like WMS, third-party APIs like Google Maps, and even create maps from static images. You'll load data from KML and GeoJSON files, create interactive vector layers, and customize the behavior and appearance of your maps.</p>
+<p>There is a growing trend in mixing location data with web applications. <em>OpenLayers 2.10 Beginner's Guide</em> will show you how to create powerful web maps using the best web mapping library around.</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<dl class="datalist overview__datalist">
+<div class="datalist__item">
+<dt class="datalist__name">Publication date:</dt>
+<dd class="datalist__value">March 2011</dd>
+</div>
+<div class="datalist__item">
+<dt class="datalist__name">Publisher</dt>
+<dd class="datalist__value">Packt</dd>
+</div>
+<div class="datalist__item">
+<dt class="datalist__name">Pages</dt>
+<dd class="datalist__value">372</dd>
+</div>
+<div class="datalist__item">
+<dt class="datalist__name">ISBN</dt>
+<dd class="datalist__value" itemprop="gtin13">9781849514125</dd>
+</div>
+</dl>
+</div>
+</div>
+<hr />
+<div style="display:none" class="overview overview__tags">
+<h4>Related Tags:</h4>
+<a href="#" class="pill pill--margin">New Releases</a>
+<a href="#" class="pill pill--margin">Django</a>
+<a href="#" class="pill pill--margin">AJAX</a>
+<a href="#" class="pill pill--margin">Web Development</a>
+<a href="#" class="pill pill--margin">Most Popular</a>
+</div>
+</div>
+</section>
+<article class="product__preview container">
+<div class="container-full container-full--small book-content">
+<a name="book-section-0">&nbsp;</a>
+<div id="book-section-0">
+<div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="ch01"></a>Chapter&Acirc;&nbsp;1.&Acirc;&nbsp;Getting Started with OpenLayers</h2></div></div></div><div class="blockquote"><blockquote class="blockquote"><p>Within the past few years, the popularity of interactive web maps has exploded. In the past, creating interactive maps was reserved for large companies or experts with lots of money. But now, with the advent of free services like Google and Yahoo! Maps, online mapping is easily accessible to everyone. Today, with the right tools, anyone can easily create a web map with little or even no knowledge of geography, cartography, or programming.</p><p>Web maps are expected to be fast, accurate, and easy to use. Since they are online, they are expected to be accessible from anywhere on nearly any platform. There are only a few tools that fulfill all these expectations.</p><p><a id="id0" class="indexterm"></a>OpenLayers is one such tool. It's free, open source, and very powerful. Providing both novice developers and seasoned GIS professionals with a robust library, OpenLayers makes it easy to create modern, fast, and interactive web-mapping applications.</p></blockquote></div><p>In this chapter we will</p><div class="itemizedlist"><ul type="bullet"><li style="list-style-type: disc"><p>Learn what OpenLayers is</p></li><li style="list-style-type: disc"><p>Discuss some web mapping application concepts</p></li><li style="list-style-type: disc"><p>Make our First Map</p></li><li style="list-style-type: disc"><p>Cover concepts behind OpenLayers, such as Object Oriented Programming</p></li><li style="list-style-type: disc"><p>Provide information on resources outside of this book</p></li></ul></div></div>
+</div>
+<a name="book-section-1">&nbsp;</a>
+<div id="book-section-1">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec11"></a>What is OpenLayers?</h2></div></div><hr></div><p><span class="strong"><strong>OpenLayers</strong></span> is an open source, <span class="strong"><strong>client side</strong></span> JavaScript <span class="strong"><strong>library</strong></span> for making interactive web maps, viewable in nearly any web browser. Since it is a client side library, it requires no special server side software or settings&acirc;&#128;&#148;you can use it without even downloading anything! Originally developed by Metacarta, as a response, in part, to Google Maps, it has grown into a mature, popular framework with many passionate developers and a very helpful community.</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec09"></a>Why use OpenLayers?</h3></div></div></div><a id="id1" class="indexterm"></a><a id="id2" class="indexterm"></a><p>OpenLayers makes creating powerful web-mapping applications easy and fun. It is very powerful but also easy to use&acirc;&#128;&#148;you don't even need to be a programmer to make a great map with it. It's open source, free, and has a strong community behind it. So if you want to dig into the internal code, or even improve it, you're encouraged to do so. Cross browser compatibility is handled for you&acirc;&#128;&#148;it even works in IE6.</p><p>OpenLayers is not tied to any proprietary technology or company, so you don't have to worry so much about your application breaking (unless you break it). At the time of writing, support for modern mobile and touch devices is in the works (with many proof of concept examples), and should be in the official library in the near future&acirc;&#128;&#148;if they aren't by the time you're reading this.</p><p>OpenLayers allows you to build entire mapping applications from the ground up, with the ability to customize every aspect of your map&acirc;&#128;&#148;layers, controls, events, etc. You can use a multitude of different map server backends together, including a powerful vector layer. It makes creating map 'mashups' extremely easy.</p></div></div>
+</div>
+<a name="book-section-2">&nbsp;</a>
+<div id="book-section-2">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec12"></a>What, technically, is OpenLayers?</h2></div></div><hr></div><p>We said OpenLayers is a <span class="strong"><strong>client side</strong></span> JavaScript <span class="strong"><strong>library</strong></span>, but what does this mean?</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec10"></a>Client side</h3></div></div></div><a id="id3" class="indexterm"></a><a id="id4" class="indexterm"></a><p>When we say client side we are referring to the user's computer, specifically their web browser. The only thing you need to have to make OpenLayers work is the OpenLayers code itself and a web browser. You can either download it and use it on your computer locally, or download nothing and simply link to the JavaScript file served on the site that hosts the OpenLayers project <a id="id5" class="indexterm"></a>(<a class="ulink" href="http://openlayers.org" target="_blank">http://openlayers.org</a>). OpenLayers works on nearly all browsers and can be served by any web server or your own computer. Using a modern, standard-based browser such as Firefox, Google Chrome, Safari, or Opera is recommended.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec11"></a>Library</h3></div></div></div><a id="id6" class="indexterm"></a><a id="id7" class="indexterm"></a><p>When we say <span class="strong"><strong>library</strong></span> we mean that OpenLayers is an <span class="strong"><strong>API</strong></span> (<span class="strong"><strong>Application Programmer Interface</strong></span>) that provides you with tools to develop your own web maps. Instead of building a mapping application from scratch, you can use OpenLayers for the mapping part, which is maintained and developed by a bunch of brilliant people.</p><p>For example, if you wanted to write a blog you could either write your own blog engine, or use an existing one such as WordPress or Blogger and build on top of it. Similarly, if you wanted to create a web map, you could write your own from scratch, or use software that has been developed and tested by a group of developers with a strong community behind it.</p><p>By choosing to use OpenLayers, you do have to learn how to use the library (or else you wouldn't be reading this book), but the benefits greatly outweigh the costs. You get to use a rich, highly tested and maintained code base, and all you have to do is learn how to use it. Hopefully, this book will help you with that.</p><p>OpenLayers is written in <span class="strong"><strong>JavaScript</strong></span>, but don't fret if you don't know it very well. All you really need is some knowledge of the basic syntax, and we'll try to keep things as clear as possible in the code examples.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="note02"></a>Note</h3><p>If you are unfamiliar with JavaScript, Mozilla provides phenomenal JavaScript documentation<a id="id8" class="indexterm"></a> at <a class="ulink" href="https://developer.mozilla.org/en/javascript" target="_blank">https://developer.mozilla.org/en/javascript</a>.</p></div></div></div>
+</div>
+<a name="book-section-3">&nbsp;</a>
+<div id="book-section-3">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec13"></a>Anatomy of a web-mapping application</h2></div></div><hr></div><a id="id9" class="indexterm"></a><p>First off&acirc;&#128;&#148;what is a 'web-mapping application'? To put it bluntly, it's some type of Internet application that makes use of a map. This could be a site that displays the latest geo-tagged images from Flickr (we'll do this in <a class="link" href="#" linkend="ch11">Chapter 11</a>), a map that shows markers of locations you've traveled to, or an application that tracks invasive plant species and displays them. If it contains a map and it does something, you could argue that it is a web map application. The term can be used in a pretty broad sense.</p><p>So where exactly does OpenLayers fit in? We know OpenLayers is a client side mapping library, but what does that mean? Let's take a look at the following screenshot:</p><div class="mediaobject"><img src="https://static.packt-cdn.com/products/9781849514125/graphics/4125OS_01_01.jpg"></div><a id="id10" class="indexterm"></a><a id="id11" class="indexterm"></a><p>This is called the <span class="strong"><strong>Client / Server Model</strong></span> and it is, essentially, the core of how all web applications operate. In the case of a web map application, some sort of map client (e.g., OpenLayers) communicates with some sort of web map server (e.g., a WMS server or the Google Maps backend).</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec12"></a>Web map client</h3></div></div></div><a id="id12" class="indexterm"></a><a id="id13" class="indexterm"></a><p>OpenLayers lives on the client side. One of the primary tasks the client performs is to get map images from a map server. Essentially, the client has to ask a map server for what you want to look at. Every time you navigate or zoom around on the map, the client has to make new requests to the server&acirc;&#128;&#148;because you're asking to look at something different.</p><p>OpenLayers handles this all for you, and it is happening via asynchronous JavaScript (<span class="strong"><strong>AJAX</strong></span>) calls to a map server. To reiterate&acirc;&#128;&#148;the basic concept is that OpenLayers sends requests to a map server for map images every time you interact with the map, then OpenLayers pieces together all the returned map images so it looks like one big, seamless map. In <a class="link" href="#" linkend="ch02">Chapter 2</a>, we'll cover this concept in more depth.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec13"></a>Web map server</h3></div></div></div><a id="id14" class="indexterm"></a><a id="id15" class="indexterm"></a><p>A map server (or map service) provides the map itself. There are a myriad of different map server backends. A small sample includes WMS, Google Maps, Yahoo! Maps, ESRI ArcGIS, WFS, and OpenStreet Maps. If you are unfamiliar with those terms, don't sweat it. The basic principle behind all those services is that they allow you to specify the area of the map you want to look at (by sending a request), and then the map servers send back a response containing the map image. With OpenLayers, you can choose to use as many different backends in any sort of combination as you'd like.</p><p>OpenLayers is not a web map server; it only consumes data from them. So, you will need to be able to access some type of web map service. Don't worry though. Fortunately, there are a myriad of free and/or open source web map servers available that are remotely hosted or easy to set up yourself, such as MapServer.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="note03"></a>Note</h3><p>Throughout this book, we'll often use a freely available web mapping service from OSGeo, so don't worry about having to provide your own.</p></div><a id="id16" class="indexterm"></a><a id="id17" class="indexterm"></a><p>With many web map servers you do not have to do anything to use them&acirc;&#128;&#148;just supplying a URL to them in OpenLayers is enough. OSGeo, OpenStreet Maps, Google, Yahoo!, and Bing Maps, for instance, provide access to their map servers (although, some commercial restrictions may apply with various services in some situations).</p></div></div>
+</div>
+<a name="book-section-4">&nbsp;</a>
+<div id="book-section-4">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec14"></a>Relation to Google / Yahoo! / and other mapping APIs</h2></div></div><hr></div><a id="id18" class="indexterm"></a><p>The Google, Yahoo!, Bing, and ESRI Mappings API allow you to connect with their map server backend. Their APIs also usually provide a client side interface (at least in the case of Google Maps).</p><a id="id19" class="indexterm"></a><p>The Google Maps API<a id="id20" class="indexterm"></a>, for instance, is fairly powerful. You have the ability to add markers, plot routes, and use KML data (things you can also do in OpenLayers)&acirc;&#128;&#148;but the main drawback is that your mapping application relies totally on Google. The map client and map server are provided by a third party. This is not inherently a bad thing, and for many projects, Google Maps and the like are a good fit.</p><p>However, there are quite a few drawbacks.</p><div class="itemizedlist"><ul type="bullet"><li style="list-style-type: disc"><p>You're not in control of the backend</p></li><li style="list-style-type: disc"><p>You can't really customize the map server backend, and it can change at any time</p></li><li style="list-style-type: disc"><p>There may be some commercial restrictions, or some costs involved</p></li><li style="list-style-type: disc"><p>These other APIs also cannot provide you with anything near the amount of flexibility and customization that an open source mapping application framework (i.e., OpenLayers) offers</p></li></ul></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec14"></a>Layers in OpenLayers</h3></div></div></div><a id="id21" class="indexterm"></a><p>So, what's with the <span class="strong"><strong>Layer</strong></span> in OpenLayers? Well, OpenLayers allows you to have multiple different 'backend' servers that your map can use. To access a web map server, you create a <span class="strong"><strong>layer</strong></span> object and add it to your map with OpenLayers.</p><a id="id22" class="indexterm"></a><p>For instance, if you wanted to have a Google Maps and a WMS service displayed on your map, you would use OpenLayers to create a GoogleMaps <span class="strong"><strong>layer</strong></span> object and a WMS <span class="strong"><strong>layer</strong></span> object, and then add them to your OpenLayers map. We'll soon see an example with a WMS layer, so don't worry if you're a little confused.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec15"></a>What is a Layer?</h3></div></div></div><p>Like layers of an onion, each layer is above and will cover up the previous one; the order that you add in the layers is important. With OpenLayers, you can arbitrarily set the overall transparency of any layer, so you are easily able to control how much layers cover each other up, and dynamically change the layer order at any time.</p><p>For instance, you could have a Google map as your base layer, a layer with satellite imagery that is semi-transparent, and a vector layer all active on your map at once. A vector layer is a powerful layer that lets us add markers and various geometric objects to our maps&acirc;&#128;&#148;we'll cover it in <a class="link" href="#" linkend="ch09">Chapter 9</a>. Thus, in this example, your map would have three separate layers. We'll go into much more depth about layers and how to use and combine them in <a class="link" href="#" linkend="ch03">Chapter 3</a>.</p></div></div>
+</div>
+<a name="book-section-5">&nbsp;</a>
+<div id="book-section-5">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec15"></a>The OpenLayers website</h2></div></div><hr></div><a id="id23" class="indexterm"></a><p>The website for OpenLayers is located at <a class="ulink" href="http://openlayers.org/" target="_blank">http://openlayers.org/</a>. To begin, we need to download a copy of OpenLayers (or, we can directly link to the library&acirc;&#128;&#148;but we'll download a local copy). You can download the compressed library as either a <code class="literal">.tar.gz</code> or <code class="literal">.zip</code>, but both contain the same files.</p><div class="mediaobject"><img src="https://static.packt-cdn.com/products/9781849514125/graphics/4125_01_02.jpg"></div><p>Let's go over the links:<a id="id24" class="indexterm"></a></p><div class="itemizedlist"><ul type="bullet"><li style="list-style-type: disc"><p><span class="strong"><strong>Link to the hosted version</strong></span>: If you do not want to actually download OpenLayers, you can instead link to the OpenLayers library by adding this script URL to your site in a &lt;script&gt; tag.</p></li><li style="list-style-type: disc"><p><span class="strong"><strong>2.10 (Stable)</strong></span> <code class="literal">.tar.gz</code> <span class="strong"><strong>or</strong></span> <code class="literal">.zip</code>: This should show the latest stable release (2.10 at the time of writing). You can download it as either a <code class="literal">tar.gz</code> or <code class="literal">.zip</code>; if you are unsure of which to get, you should download the <code class="literal">.zip</code> version.</p></li><li style="list-style-type: disc"><p><span class="strong"><strong>2.10 Release Notes</strong></span>: This highlights things that have changed, bugs that have been fixed, etc.</p></li><li style="list-style-type: disc"><p><span class="strong"><strong>Class documentation, more documentation</strong></span>: These are links to the API documentation, which we will make heavy use of throughout the book. I recommend opening it up and keeping it up while working through the examples.</p></li><li style="list-style-type: disc"><p><span class="strong"><strong>See examples...:</strong></span> OpenLayers provides a rich array of examples demonstrating features of the library; if you're ever stuck or looking for a good example&acirc;&#128;&#148;go here.</p></li></ul></div></div>
+</div>
+<a name="book-section-6">&nbsp;</a>
+<div id="book-section-6">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec16"></a>Time for action &acirc;&#128;&#147; downloading OpenLayers</h2></div></div><hr></div><a id="id25" class="indexterm"></a><p>Let's download the OpenLayers library. After you're done, you should have the OpenLayers library files set up on your computer.</p><div class="orderedlist"><ol class="orderedlist arabic" type="1"><li><p>Go to the OpenLayers website (<a class="ulink" href="http://openlayers.org" target="_blank">http://openlayers.org</a>) and download the <code class="literal">.zip</code> version (or if you prefer the <code class="literal">.tar.gz</code> version).</p></li><li><p>Extract the file you just downloaded. When you extract it, you'll end up with a folder called OpenLayers-2.10 (or whatever your version is).</p></li><li><p>Open up the OpenLayers folder. Once inside, you'll see a lot of folders and files, but the ones we are concerned with right now is a file called <code class="literal">OpenLayers.js</code> and two folders, <code class="literal">/img</code> and <code class="literal">/theme</code>. We'll be copying these to a new folder.</p><div class="mediaobject"><img src="https://static.packt-cdn.com/products/9781849514125/graphics/4125_01_03.jpg"></div></li><li><p>Create a new folder outside the OpenLayers directory; we'll use <code class="literal">~/code/</code> (if you are on Windows, then <code class="literal">c:/code</code>). You can name the folder whatever you like, but we'll refer to it as the <code class="literal">code</code> folder. Inside the code folder, copy over the <code class="literal">OpenLayers.js</code> and two folders (<code class="literal">/img</code> and <code class="literal">/theme</code>) from the previous step. Your new folder structure should look similar to this:</p><div class="mediaobject"><img src="https://static.packt-cdn.com/products/9781849514125/graphics/4125_01_04.jpg"></div></li></ol></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec16"></a>
+<span class="emphasis"><em>What just happened?</em></span>
+</h3></div></div></div><p>We just 'installed' OpenLayers by copying over a pre-built, compressed JavaScript file containing the entire OpenLayers library code and two directories containing assets (images and stylesheets). To use OpenLayers, you'll need at a minimum the <code class="literal">OpenLayers.js</code> file and the <code class="literal">img</code> and <code class="literal">theme</code> folders.</p><p>If you open the <code class="literal">OpenLayers.js</code> file, you'll notice it is nearly unreadable. This is because this is a <span class="strong"><strong>minified</strong></span> version, which basically means extra white space and unnecessary characters have been stripped out to cut down on the file size. While it is no longer readable, it is a bit smaller and thus requires less time to download. If you want to look at the uncompressed source code, you can view it by looking in the OpenLayers source code folder you extracted.</p><p>You can, as we'll see in the last chapter of this book, build your own custom configurations of the library, including only the things you need. But for now, we'll just use the entire library. Now that we have our OpenLayers library files ready to use, let's make use of them!</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec17"></a>Making our first map</h3></div></div></div><a id="id26" class="indexterm"></a><p>The process for creating a map with OpenLayers requires, at a minimum, the following things:<a id="id27" class="indexterm"></a></p><div class="itemizedlist"><ul type="bullet"><li style="list-style-type: disc"><p>Including the OpenLayers library files</p></li><li style="list-style-type: disc"><p>Creating an HTML element that the map will appear in</p></li><li style="list-style-type: disc"><p>Creating a map object from the Map class</p></li><li style="list-style-type: disc"><p>Creating a layer object from a Layer class</p></li><li style="list-style-type: disc"><p>Adding the layer to the map</p></li><li style="list-style-type: disc"><p>Defining the map's extent (setting the area the map will initially be displaying)</p></li></ul></div><p>Now we're finally ready to create our first map!</p></div></div>
+</div>
+<a name="book-section-7">&nbsp;</a>
+<div id="book-section-7">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec17"></a>Time for action &acirc;&#128;&#147; creating your first map</h2></div></div><hr></div><a id="id28" class="indexterm"></a><a id="id29" class="indexterm"></a><p>Let's dive into OpenLayers and make a map! After you finish this section, you should have a working map, which uses a publicly available WMS server backend from OSGeo.</p><div class="orderedlist"><ol class="orderedlist arabic" type="1"><li><p>Navigate to the <code class="literal">code</code> directory that contains the <code class="literal">OpenLayers.js</code> file, <code class="literal">/img</code> and <code class="literal">/theme</code> directories. Create a file here called <code class="literal">index.html</code>. This directory (<code class="literal">/code</code>) will be referred to as our root directory, because it is the base (root) folder where all our files reside.</p></li><li><p>Add in the following code to <code class="literal">index.html</code> and save the file as an <code class="literal">.html</code> file&acirc;&#128;&#148;if you are using Windows, I suggest using Notepad++. Do not try to edit the file in a program like Microsoft Word, as it will not save properly. The following code will also be used as the base template code for many future examples in this book, so we'll be coming back to it a lot.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="tip01"></a>Tip</h3><p>The lines numbers in the code are for demonstration purposes; do not type them in when you are writing your code.</p></div><div class="informalexample"><pre class="programlisting">1.&lt;!DOCTYPE html&gt;
+2.&lt;html lang='en'&gt;
+3.&lt;head&gt;
+4.    &lt;meta charset='utf-8' /&gt;
+5. 	&lt;title&gt;My OpenLayers Map&lt;/title&gt;
+6.    &lt;script type='text/javascript' src='OpenLayers.js'&gt;&lt;/script&gt;
+7.    &lt;script type='text/javascript'&gt;
+8.
+9.        var map;
+10.
+11.       function init() {
+12.           map = new OpenLayers.Map('map_element', {});
+13.           var wms = new OpenLayers.Layer.WMS(
+14.               'OpenLayers WMS',
+15.               'http://vmap0.tiles.osgeo.org/wms/vmap0',
+16.               {layers: 'basic'},
+17.               {}
+18.           );
+19.
+20.           map.addLayer(wms);
+21.           if(!map.getCenter()){
+22.               map.zoomToMaxExtent();
+23.           }
+24.       }
+25.
+26.    &lt;/script&gt;
+27.&lt;/head&gt;
+28.
+29.&lt;body onload='init();'&gt;
+30.    &lt;div id='map_element' style='width: 500px; height: 500px;'&gt;
+31.    &lt;/div&gt;
+32.&lt;/body&gt;
+33.&lt;/html&gt;</pre></div></li><li><a id="id30" class="indexterm"></a><a id="id31" class="indexterm"></a><p>Open up <code class="literal">index.html</code> in your web browser. You should see something similar to:</p><div class="mediaobject"><img src="https://static.packt-cdn.com/products/9781849514125/graphics/4125_01_05.jpg"></div></li></ol></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec18"></a>
+<span class="emphasis"><em>What just happened?</em></span>
+</h3></div></div></div><p>We just created our first map using OpenLayers! If it did not work for you for some reason, try double checking the code and making sure all the commas and parentheses are in place. You can also refer to the <span class="emphasis"><em>Preface</em></span> where a link to code samples used in the book is given. By default, we're given a few controls if we don't specify any. We will use the file we created as a template for many examples throughout the book, so save a copy of it so you can easily reference it later.</p><a id="id32" class="indexterm"></a><a id="id33" class="indexterm"></a><p>The control on the left side (the navigation buttons) is called the <span class="strong"><strong>PanZoom</strong></span> control<a id="id34" class="indexterm"></a>. You can click the buttons to navigate around the map, drag the map with your mouse/use the scroll wheel to zoom in, or use your keyboard's arrow keys. We'll cover controls in far greater detail in <a class="link" href="#" linkend="ch06">Chapter 6</a>.</p></div></div>
+</div>
+<a name="book-section-8">&nbsp;</a>
+<div id="book-section-8">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec18"></a>How the code works</h2></div></div><hr></div><a id="id35" class="indexterm"></a><p>Now, let's take a look at the code&acirc;&#128;&#148;line by line. Before we do that, let's include a quick reference to the line numbers at which the requirements from the previous section occur at. These are the core things that you need to do to have a functioning map.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="note04"></a>Note</h3><p>We'll denote line numbers with brackets&acirc;&#128;&#148;[x], where x is the line number.</p></div><div class="orderedlist"><ol class="orderedlist arabic" type="1"><li><p>Including the OpenLayers library files:</p><div class="informalexample"><pre class="programlisting">Line [6]
+  &lt;script type='text/javascript' src='OpenLayers.js'&gt;&lt;/script&gt;</pre></div></li><li><p>Creating an HTML element for our map:</p><div class="informalexample"><pre class="programlisting">Lines [30] and [31]
+  &lt;div id='map_element' style='width: 500px; height: 500px'&gt;
+&lt;/div&gt;</pre></div></li><li><p>Creating a map object from the Map class:</p><div class="informalexample"><pre class="programlisting">Line [12]
+  map = new OpenLayers.Map('map_element', { });</pre></div></li><li><p>Creating a layer object from a Layer class:</p><div class="informalexample"><pre class="programlisting">Lines [13] to [18]
+  var wms_layer = new OpenLayers.Layer.WMS(
+    'WMS Layer Title',
+    'http://vmap0.tiles.osgeo.org/wms/vmap0',
+    {layers: 'basic'},
+    {}
+  );</pre></div></li><li><p>Adding the layer to the map:</p><div class="informalexample"><pre class="programlisting">Line [20]
+  map.addLayer(wms_layer);</pre></div></li><li><p>Defining the map's extent:</p><div class="informalexample"><pre class="programlisting">Lines [21] to [23]
+  if(!map.getCenter()){
+    map.zoomToMaxExtent();
+  }</pre></div></li></ol></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec19"></a>Understanding the code&acirc;&#128;&#148;Line by line</h3></div></div></div><a id="id36" class="indexterm"></a><p><span class="strong"><strong>Lines [1] to [5]:</strong></span> Sets up the HTML page. Every HTML page needs an <code class="literal">&lt;html&gt;</code> and <code class="literal">&lt;head&gt;</code> tag, and the extraneous code you see specifies various settings that inform your browser that this is an HTML5 compliant page. For example, we include the <code class="literal">DOCTYPE</code> declaration in line [1] to specify that the page conforms to standards set by the WC3. We also specify a <code class="literal">&lt;title&gt;</code> tag, which contains the title that will be displayed on the page.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="note05"></a>Note</h3><p>This is the structure that all our code examples will follow, so this basic code template will be implicitly assumed in all examples that follow throughout the book.</p></div><p><span class="strong"><strong>Line [6]:</strong></span> <code class="literal">&lt;script type='text/javascript' src='OpenLayers.js'&gt;&lt;/script&gt;</code></p><p>This includes the OpenLayers library. The location of the file is specified by the <code class="literal">src='OpenLayers.js'</code> attribute. Here, we're using a <span class="strong"><strong>relative path</strong></span>
+<a id="id37" class="indexterm"></a>. As the <code class="literal">index.html</code> page is in the same folder as the <code class="literal">OpenLayers.js</code> file, we don't have to worry about specifying the path to it. The file could be either on your computer or another computer&acirc;&#128;&#148;it doesn't matter much, as long as the browser can load it.</p><p>We can also use an <span class="strong"><strong>absolute path</strong></span>
+<a id="id38" class="indexterm"></a>, which means we pass in a URL that the script is located at. <code class="literal">OpenLayers.org</code> hosts the script file as well; we could use the following line of code to link to the library file directly:</p><div class="informalexample"><pre class="programlisting">&lt;script type='text/javascirpt' src='http://openlayers.org/api/OpenLayers.js'&gt;&lt;/script&gt;</pre></div><p>Notice how the src specifies an actual URL&acirc;&#128;&#148;this is how we use <span class="strong"><strong>absolute paths</strong></span>. Either way works, however, throughout the book we'll assume that you are using a relative path and have the OpenLayers library on your own computer/server. If you use the hosted OpenLayers library, you cannot be sure that it will always be available, and it may change overnight (and changes when the library is updated)&acirc;&#128;&#148;so using a local copy is recommended.</p><p><span class="strong"><strong>Line [7]</strong></span>: Starts a <code class="literal">&lt;script&gt;</code> block. We'll set up all our code inside it to create our map. Since the OpenLayers library has been included in line [5], we are able to use all the classes and functions the library contains.</p><p><span class="strong"><strong>Line [8]</strong></span>: <code class="literal">var map;</code></p><p>Here we create a global variable called <code class="literal">map</code>
+<a id="id39" class="indexterm"></a>. In JavaScript, anytime we <span class="strong"><strong>create</strong></span> a variable we need to place <code class="literal">var</code> in front of it to ensure that we don't run into <span class="strong"><strong>scope</strong></span> issues (what functions can access which variables). When <span class="strong"><strong>accessing</strong></span> a variable, you do not need to put <code class="literal">var</code> in front of it.</p><a id="id40" class="indexterm"></a><p>Since we are defining map as a variable at the global level (outside of any functions), we can access it anywhere in our code. Soon we will make this map variable our map object, but right now it is just an empty global variable.</p><p><span class="strong"><strong>Line [11]</strong></span>: Creates a function called <code class="literal">init</code>
+<a id="id41" class="indexterm"></a>. When the page loads (via <code class="literal">body onload='init();'</code> on line [29]), this function will get called. This function contains all of our code to set up our OpenLayers map. If you are familiar with JavaScript, you do not have to put all the code in a function call&acirc;&#128;&#148;you could, for instance, just put the code at the bottom of the page and avoid a function call all together. Creating a function that gets called when the page loads is a common practice and so we will be doing it throughout the book.</p><p><span class="strong"><strong>Line [12]</strong></span>: <code class="literal">map = new OpenLayers.Map('map_element', { });</code></p><p>Remember that global map variable? Well, now we're making it a map object, created from the <code class="literal">OpenLayers.Map</code> class<a id="id42" class="indexterm"></a>. It is also referred to as an instance of the Map class. We'll talk about what this means later in this chapter in the <span class="emphasis"><em>Object Oriented Programming</em></span> section. The map object is the crux of our OpenLayers application&acirc;&#128;&#148; we call its functions to tell the map to zoom to areas, fire off events, keep track of layers, etc.</p><p>Now, let's look at the right hand side of the equal sign (<code class="literal">=</code>): <code class="literal">new</code> means that we are creating a new object from the class that follows it. <code class="literal">OpenLayers.Map</code> is the class name which we are creating an object from. Notice that something is inside the parenthesis: <code class="literal">('map_element', {})</code>. This means we are passing two things into the class (called arguments, and you pass them in separated by a comma). Every class in OpenLayers expects different arguments to be passed into it, and some classes don't expect anything.</p><p>The <span class="strong"><strong>Map</strong></span> class<a id="id43" class="indexterm"></a> expects two parameters. The first argument, <code class="literal">map_element</code>, is the ID of the HTML element that the map will appear in. The second argument, <code class="literal">{ }</code>, are the map <span class="strong"><strong>options</strong></span>, consisting of <code class="literal">key:value</code> pairs (e.g., <code class="literal">{key:value}</code>). This is also called <span class="strong"><strong>JavaScript Object Notation</strong></span>, a way to create objects on the fly. We'll cover this in more depth very shortly in the next section. Also, you are not required to include this argument if it is empty (even though we just did it), but we are just doing it here for consistency.</p><p>Because we passed in <code class="literal">map_element</code> as the first parameter, we will have an HTML element (almost always a &lt;div&gt;) with the ID of <code class="literal">map_element</code>. The HTML element ID can be anything, but for the sake of clarity and to avoid confusion, we call it <code class="literal">map_element</code>.</p><p><span class="strong"><strong>Line [13]</strong></span>: <code class="literal">var wms = new OpenLayers.Layer.WMS(</code></p><p>Here, we create a layer object for the map to use from the WMS subclass<a id="id44" class="indexterm"></a> of the Layer class<a id="id45" class="indexterm"></a>. In OpenLayers, every map needs to have at least one layer. The layer points to the 'back end', or the server side map server, as we discussed earlier. The layer can be any of a multitude of different services, but we are using WMS here. WMS, which stands for <span class="strong"><strong>Web Map Service</strong></span>
+<a id="id46" class="indexterm"></a>, is an international standard defined by the <span class="strong"><strong>Open Geospatial Consortium</strong></span> (<span class="strong"><strong>OGC</strong></span>)<a id="id47" class="indexterm"></a>.</p><p>The arguments we can pass in for layers are dependent on the layer class&acirc;&#128;&#148;we cover layers in detail in <a class="link" href="#" linkend="ch03">Chapter 3</a>. If you don't want to wait, you can also check out the documentation at <a class="ulink" href="http://dev.openlayers.org/docs/files/OpenLayers/Layer-js.html" target="_blank">http://dev.openlayers.org/docs/files/OpenLayers/Layer-js.html</a> to see what arguments different layers of classes expect.</p><p>Notice we don't include everything on one line when creating our layer object&acirc;&#128;&#148;this improves readability, making it easier to see what we pass in. The only difference is that we are also adding a new line after the commas which separate arguments, which doesn't affect the code (but does make it easier to read).</p><p>Line [14]: <code class="literal">'WMS Layer Title',</code></p><p>This is the first parameter passed in; the layer's title. Most layer classes expect the first parameter passed in to be the title of the layer. This title can be anything you would like, the main purpose of it is for human readability&acirc;&#128;&#148;it is displayed in controls such as the layer list.</p><p>Line [15]: <code class="literal">'http://vmap0.tiles.osgeo.org/wms/vmap0',</code></p><p>The URL is the second parameter that the WMS layer class expects to receive. For now, we're using a publicly available WMS service from OSGeo. We will cover in depth the WMS in <a class="link" href="#" linkend="ch03">Chapter 3</a>. For now, all you need to know is that this is the base URL, which the layer will be using.</p><p>Line [16]: <code class="literal">{layers: 'basic'},</code></p><a id="id48" class="indexterm"></a><p>The third parameter is an anonymous object containing the layer <span class="strong"><strong>properties</strong></span> (similar in format to the previous <span class="strong"><strong>options</strong></span> object<a id="id49" class="indexterm"></a> on line [12]), and is specific to the WMS layer class. These are the things that are actually added (more or less) straight into the GET call to the map server backend when OpenLayers makes requests for the map images.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec20"></a>JavaScript object notation</h3></div></div></div><a id="id50" class="indexterm"></a><p>In OpenLayers, we pass in <span class="strong"><strong>anonymous objects</strong></span> to classes a lot. In JavaScript, <span class="strong"><strong>anonymous objects</strong></span> are comma separated <code class="literal">key:value</code> pairs, and are set up in the format of <code class="literal">{key1:value1, key2:value2}</code>. They are, basically, objects that are created without deriving from a class. This format is also referred to as <span class="strong"><strong>JavaScript Object Notation.</strong></span></p><p>When we say <code class="literal">key1:value1</code>, it's similar to saying <code class="literal">"key1 = value1"</code>, but we use a colon instead of an equals sign. We can also create an anonymous object and pass it in instead of creating it on the line, for example:</p><div class="informalexample"><pre class="programlisting">  var layer_parameters = {layers: 'basic'};
+  var wms = new OpenLayers.Layer.WMS('layer_title', 'url',layer_parameters, &acirc;&#128;&brvbar;);</pre></div><a id="id51" class="indexterm"></a><p>With a WMS layer, we need to pass in, at a minimum, a <code class="literal">layers</code> key. In this case it has the value of <code class="literal">'basic'</code>. This <code class="literal">layer</code> parameter specifies layers that exist on the map server. So, when you ask the WMS server from a map image with the layer <code class="literal">'basic'</code>, it sends you back an image that is composed of that layer. You can also ask for multiple layers from the map server. In this case, we only want the WMS service to give us back an image that contains a layer called <code class="literal">'basic'</code>.</p><p>Let's get back to the code.</p><p><span class="strong"><strong>Line [17]:</strong></span>
+<code class="literal">{ }</code></p><p>The fourth parameter is an optional <span class="strong"><strong>options</strong></span> object, an anonymous object in the format we just discussed. These properties are generally shared by every OpenLayers Layer class. For instance, regardless of the Layer type (e.g., WMS or Google Layer), you can pass in an opacity setting (e.g., <code class="literal">{opacity: .8}</code> for 80 percent opacity). So, regardless of whether you are working with a WMS or a Vector layer, this opacity property can apply to either layer.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="note06"></a>Note</h3><p>Since this is the last thing passed into the Layer object creation call, make sure there is not a leading trailing comma. Trailing commas are a common error and are often tedious to debug.</p></div><p>This <span class="strong"><strong>options</strong></span> object<a id="id52" class="indexterm"></a> is optional, but we will often use it, so it's a good habit to keep our code consistent and provide an empty object (by <code class="literal">{}</code>), even if we aren't passing anything into it yet.</p><p><span class="strong"><strong>Line [18]:</strong></span> <code class="literal">);</code></p><p>This simply finalizes the object creation call.</p><p><span class="strong"><strong>Line [20]:</strong></span>
+<code class="literal">map.addLayer(wms);</code></p><p>Now that we have a <a id="id53" class="indexterm"></a>
+<code class="literal">wms_layer</code> object created, we need to add it to the map object. Notice we are calling a function of the map object. There are actually a few ways to go about adding a layer to a map object. We can use the above code (by calling <code class="literal">map.addLayer</code>), where we pass in an individual layer, or we could use <code class="literal">map.addLayers</code>:</p><div class="informalexample"><pre class="programlisting">map.addLayers( [layer1, layer2, ...] );</pre></div><p>Here, we pass an array of layers. Both methods are equally valid, but it may be easier to pass in an array when you have multiple layers.</p><p>You can also create the layer objects before you create the map object and pass the layer objects into the map when you create it, for instance:</p><div class="informalexample"><pre class="programlisting">map = new OpenLayers.Map('map_element', {layers: [layer1, layer2, &acirc;&#128;&brvbar;]});</pre></div><p>All ways are valid, but we will usually use <code class="literal">addLayer</code> or <code class="literal">addLayers</code> throughout the book.</p><p><span class="strong"><strong>Line [21] - [23]:</strong></span></p><div class="informalexample"><pre class="programlisting">if(!map.getCenter()){
+  map.zoomToMaxExtent();
+}</pre></div><a id="id54" class="indexterm"></a><p>Finally, we must specify the map's viewable area. Here, the actual code that moves the map is <code class="literal">map.zoomToMaxExtent()</code>, which zooms the map to the map's maximum extent. It is inside an <code class="literal">if</code> statement. This <code class="literal">if</code> statement checks to see whether the map already has a center point.</p><p>The reason why we add in this check is because, by default, your map can accept a specially formatted URL that can contain an extent and layers to turn on/off. This is, in more common terms, referred to as a <code class="literal">permalink</code>. If we did not check to see if a center has already been set, permalinks would not work.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="note07"></a>Note</h3><p>By default, your map adds an <span class="strong"><strong>argParser</strong></span> control<a id="id55" class="indexterm"></a> which will try to pull information from a permalink. We cover this in <a class="link" href="#" linkend="ch06">Chapter 6</a>, but to see it in action now you can simply add the following to your URL, which will zoom the map to the same coordinate and zoom level: <code class="literal">?zoom=4&amp;lat=56&amp;lon=-116</code></p><p>So, your URL might look like <code class="literal">c:/code/index.html?zoom=4&amp;lat=56&amp;lon=-116</code></p></div><p>There are a few ways to set the map's extent. If you know you want to show everything, the <code class="literal">map.zoomToMaxExtent()</code> function<a id="id56" class="indexterm"></a> is a quick and good way to do it. There are other ways as well, such as</p><div class="informalexample"><pre class="programlisting">  map.zoomToExtent(new OpenLayers.Bounds([minx,miny,maxx,maxy]);</pre></div><p>There are even more ways though. If you know a specific location you want the map to start at, this is another way to do it:</p><div class="informalexample"><pre class="programlisting">  map.setCenter(new OpenLayers.LonLat(x,y));
+  map.zoomTo(5);</pre></div><p>Where <code class="literal">x,y</code> are the Lon/Lat values, and <code class="literal">5</code> is the zoom level you wish to zoom to. By default, your map will have 16 zoom levels, which can be configured by setting the <code class="literal">numZoomLevels</code> property<a id="id57" class="indexterm"></a> when creating your map object.</p><p>More ways exist, but these are the most common strategies. The basic idea is that you need to specify a center location and zoom level&acirc;&#128;&#148;setting the extent accomplishes this, as does explicitly setting the center and zoom level.</p><p><span class="strong"><strong>Line [24]:</strong></span>
+<code class="literal">}</code></p><p>This simply finishes the <code class="literal">init()</code> function<a id="id58" class="indexterm"></a>.</p><p><span class="strong"><strong>Lines [26], [27]:</strong></span></p><p>These lines close the script tag and head tag.</p><p><span class="strong"><strong>Line [29]:</strong></span>
+<code class="literal">&lt;body onload='init();'&gt;</code></p><a id="id59" class="indexterm"></a><p>This starts the body tag. When the page is finished loading, via the <code class="literal">onload='init();'</code> attribute in the <code class="literal">body</code> tag, it will call the JavaScript <code class="literal">init()</code> function. We have to wait until the page loads to do this because we cannot use the map div (or any HTML element) until the page has been loaded. Another way to do this would be to put the <code class="literal">init()</code> call in a JavaScript tag at the bottom of the page (which would not be called until the page loads), but both methods accomplish the same thing.</p><p>When browsers load a page, they load it from top to bottom. To use any <span class="strong"><strong>DOM</strong></span> (<span class="strong"><strong>Document Object Model</strong></span>) elements<a id="id60" class="indexterm"></a> (any HTML element on your page) in JavaScript, they first have to be loaded by the browser. So, you cannot reference HTML with JavaScript before the browser sees the element. It'd be similar to trying to access a variable that hasn't yet been created. Even though we have JavaScript code that references the <code class="literal">map_element</code> div at the top of the page, it is not actually executed until the page is loaded (hence the need for the <code class="literal">onload</code> and <code class="literal">init()</code> function call).</p><p><span class="strong"><strong>Line [30] and [31]:</strong></span>
+<code class="literal">&lt;div id='map_element' style='width: 500px; height: 500px'&gt;&lt;/div&gt;</code></p><p>To make an OpenLayers map, we need an HTML element where the map will be displayed in. Almost always this element will be a <code class="literal">div</code>. You can give it whatever ID you would like, and the ID of this HTML element is passed into the call to create the map object. You can style the div however you would like&acirc;&#128;&#148;setting the width and height to be 100 percent, for instance, if you wanted a full page map. It would be best to style the elements using CSS, but styling the div in line like this works as well.</p><p><span class="strong"><strong>Lines [32] and [33]:</strong></span> These lines finalize the page by closing the remaining tags.</p></div></div>
+</div>
+<a name="book-section-9">&nbsp;</a>
+<div id="book-section-9">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec19"></a>Behind the scenes&acirc;&#128;&#148;Object Oriented Programming (OOP)</h2></div></div><hr></div><a id="id61" class="indexterm"></a><p>Now, let's talk about how this stuff works from a more theoretical and technical level. OpenLayers employs <span class="strong"><strong>Object Oriented Programming</strong></span> (<span class="strong"><strong>OOP</strong></span>) techniques, meaning that to use with the library, we create <span class="strong"><strong>objects</strong></span> from built in <span class="strong"><strong>classes</strong></span> that OpenLayers provides.</p><p>What does this mean? You already are familiar with what classes and objects are, but you just may not know it. Think of the concepts of a <span class="strong"><strong>class</strong></span> and <span class="strong"><strong>object</strong></span> in terms of the parts of speech. For example, think of what the abstract idea of a noun means&acirc;&#128;&#148;a person, place, thing, or idea. Noun itself (the abstract idea) is a <span class="strong"><strong>class</strong></span>. But the actual, concrete words that qualify as a noun are <span class="strong"><strong>objects</strong></span>.</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec21"></a>Interaction happens with objects</h3></div></div></div><a id="id62" class="indexterm"></a><p><span class="strong"><strong>Ironman</strong></span> and <span class="strong"><strong>Batman</strong></span> are two separate words (or, in terms of OOP, two <span class="strong"><strong>objects</strong></span>), but they belong to the same noun <span class="strong"><strong>class</strong></span>. A class is primarily used to generate objects; we interact with objects. Consider these two sentences:</p><p>"Noun was in a fight with noun."</p><p>"Ironman was in a fight with Batman."</p><p>Now, the second sentence is more of an actual sentence. We use the words <span class="strong"><strong>Ironman</strong></span> and <span class="strong"><strong>Batman</strong></span> in the sentence (which are objects; they are instances of the noun class). We don't use noun (a class) in the sentence, because interacting with a class like this doesn't make much sense. This is one of the important concepts of OOP&acirc;&#128;&#148;we interact with objects, and we generate objects through classes.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec22"></a>MadLibs</h3></div></div></div><a id="id63" class="indexterm"></a><a id="id64" class="indexterm"></a><p><span class="strong"><strong>Madlibs</strong></span>, for those unfamiliar with it, is a game where you are given text with some missing words. The point is to come up with words to fill in the blanks, but each blank can only contain a certain type of word (noun, adjective, verb, and so on). The type of word is a <span class="strong"><strong>class</strong></span> and the actual word you insert is an <span class="strong"><strong>object</strong></span>.</p></div></div>
+</div>
+<a name="book-section-10">&nbsp;</a>
+<div id="book-section-10">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec20"></a>Time for Action &acirc;&#128;&#147; play MadLibs</h2></div></div><hr></div><a id="id65" class="indexterm"></a><p>Finish this sentence, by replacing verb and noun with verb and noun 'objects':</p><p>I verb up to the noun. It's about 7 or 8 o'clock. I looked at my noun. I was there, to verb on my throne as prince of noun(place).</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec23"></a>
+<span class="emphasis"><em>What Just Happened?</em></span>
+</h3></div></div></div><p>You just did a Madlibs, demonstrating some of the concepts of OOP. As you can see, it doesn't make much sense to read the sentence as "I verb up to the noun". Since verb and noun are classes, we don't use the actual term verb or noun in the sentence.</p><p>So, the idea would be to generate separate objects, one of the class noun and one of the class verb. For example, the previous sentence could be completed like: "I pulled up to the house". Pulled and house are objects that are instances of the verb and noun classes, respectively.</p><p>We use words that belong to those classes, which are <span class="strong"><strong>objects</strong></span>. Another term used when referring to objects is <span class="strong"><strong>instance</strong></span>, which is used to designate the class the object is derived from, for example, <span class="strong"><strong>Frodo</strong></span> (a person / hobbit) is an instance of a noun.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec24"></a>Programming with OOP</h3></div></div></div><a id="id66" class="indexterm"></a><a id="id67" class="indexterm"></a><p>The same concept applies to programming. The only thing we can really do with a class is to create an object from it. Objects are derived from classes&acirc;&#128;&#148;you can interact and do things with objects, but not with classes. So, in OpenLayers, we need to create objects from the built in classes to be able to really do anything. The main thing we need are map and layers objects. If we want to create an OpenLayers map, we need a map object, and we create it in the following manner:</p><div class="informalexample"><pre class="programlisting">var map = new OpenLayers.Map( &acirc;&#128;&brvbar; );</pre></div><p>The <code class="literal">new</code> declaration means that we want to create a new object from the <code class="literal">OpenLayers.Map</code> class. The ellipsis (<code class="literal">...</code>) in the parenthesis presents things we pass into the class to create our object, called <span class="strong"><strong>arguments</strong></span>
+<a id="id68" class="indexterm"></a>. Each class expects different arguments to be passed into it. It is similar to the Madlibs example&acirc;&#128;&#148;the noun class accepts only certain words. If we were to create a word object in JavaScript, the code may look something like this:</p><div class="informalexample"><pre class="programlisting">var my_word_object = new Noun('Ironman');</pre></div><p>Here, we pass in <code class="literal">'Ironman'</code> to the noun class, and now we have our word object. Because the Noun class only accepts nouns, this would work fine. If we try to pass in a verb, for instance, it would not work because the noun class cannot accept things that are verbs. Similarly, the <span class="strong"><strong>Map</strong></span> class expects different arguments to be passed into it than the <span class="strong"><strong>Layer</strong></span> class does.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec25"></a>Subclasses</h3></div></div></div><a id="id69" class="indexterm"></a><a id="id70" class="indexterm"></a><p>There are also subclasses, which are classes derived from another class and inherit all the attributes from the 'base' class it inherits from. Subclasses can also override properties and methods that they inherit.</p><a id="id71" class="indexterm"></a><p>For instance, let's say we have a Dog class that is a subclass of the Animal class. The Dog class would inherit all the attributes of the base Animal class&acirc;&#128;&#148;such as, perhaps, a speak method. Now, the Dog class would override the speak method and it would bark (or 'yap' annoyingly) when called. The Dog class might also provide additional methods that weren't in the base Animal class, such as, perhaps, a wag_tail method.</p><div class="mediaobject"><img src="https://static.packt-cdn.com/products/9781849514125/graphics/4125OS_01_06.jpg"></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="note08"></a>Note</h3><p>'Base' class and 'Subclasses' are both classes; the terminology just helps to clear up what class inherits from what other class.</p></div><p>There are many subclasses in OpenLayers, for example, the GoogleMap Layer class<a id="id72" class="indexterm"></a> is a subclass of the base <span class="strong"><strong>Layer</strong></span> class, and the <span class="strong"><strong>Navigation</strong></span> control class<a id="id73" class="indexterm"></a> is a subclass of the base <span class="strong"><strong>Control</strong></span> class. Subclasses are still classes, and the exact same concept applies; we still need to generate objects from the class to use it.</p><p>The previous section was just an introduction to OOP. While you don't necessarily need to know a whole lot more about OOP concepts to use this book, a great resource to learn more about the concepts can be found at <a class="ulink" href="http://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank">http://en.wikipedia.org/wiki/Object-oriented_programming</a>.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="tip02"></a>Tip</h3><p>Classes are easy to spot in OpenLayers code. By convention, in OpenLayers (and many other places) class names are <code class="literal">CamelCased</code>, which means the first letter of each word is capitalized, while objects are not. For example, <code class="literal">MyClass</code> would be an example of a class name, while <code class="literal">my_object</code> would be an example of an object.</p></div></div></div>
+</div>
+<a name="book-section-11">&nbsp;</a>
+<div id="book-section-11">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec21"></a>Now what?</h2></div></div><hr></div><p>Our coverage of the sample code was not meant to be extremely thorough; just enough to give you an idea how it works. We'll be covering OOP concepts in more detail throughout the chapters, so if anything is bit unclear, don't worry too much.</p><p>As OpenLayers is a library and provides functions for you, it is important to know what those functions are and what they do. There are many places to do this, but the best source is the API docs.</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec26"></a>API docs</h3></div></div></div><a id="id74" class="indexterm"></a><a id="id75" class="indexterm"></a><p>The API documentation is always up to date and contains an exhaustive description of all the classes in OpenLayers. It is usually the best first place to go when you have a question. You can access the documentation at <a class="ulink" href="http://dev.openlayers.org/docs/files/OpenLayers-js.html" target="_blank">http://dev.openlayers.org/docs/files/OpenLayers-js.html</a>. It is continually updated and contains a wealth of information. We will constantly refer to it throughout the book, so keep the link handy! Sometimes, however, the API docs may not seem clear enough, but there are plenty of other resources out there to help you.</p></div></div>
+</div>
+<a name="book-section-12">&nbsp;</a>
+<div id="book-section-12">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec22"></a>Where to go for help</h2></div></div><hr></div><a id="id76" class="indexterm"></a><p>Books are great, but they're basically just a one way form of communication. If you have any questions that the book does not answer, Google is the best first place to go. Mailing lists and IRC are other great resources. Sometimes it's hard to formulate the right question, but there is help!</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec27"></a>This book's website</h3></div></div></div><a id="id77" class="indexterm"></a><p>The extension website for this book can be found at <a class="ulink" href="http://vasir.net/openlayers_book" target="_blank">http://vasir.net/openlayers_book</a>. Current, up to date corrections and code fixes, along with more advanced tutorials and explanations, can be found there&acirc;&#128;&#148;and also on my blog at <a class="ulink" href="http://vasir.net/blog" target="_blank">http://vasir.net/blog</a>. You can also grab the code and more information about this book at Packt Publishing's website for the book, located at <a class="ulink" href="https://www.packtpub.com/openlayers-2-1-javascript-web-mapping-library-beginners-guide/book" target="_blank">https://www.packtpub.com/openlayers-2-1-javascript-web-mapping-library-beginners-guide/book</a>.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec28"></a>Mailing lists</h3></div></div></div><a id="id78" class="indexterm"></a><a id="id79" class="indexterm"></a><p>The OpenLayers mailing list is an invaluable resource that lets you not only post questions, but also browse questions others have asked (and answered). There are two main OpenLayers news groups&acirc;&#128;&#148;Users and Dev. The <span class="strong"><strong>Users</strong></span> lis<a id="id80" class="indexterm"></a>
+<a id="id81" class="indexterm"></a>t is where the majority of questions are asked. <span class="strong"><strong>Dev</strong></span> is reserved for development of the OpenLayers library itself. If you have questions about how to use OpenLayers, they belong in the Users list, not the Dev list<a id="id82" class="indexterm"></a>
+<a id="id83" class="indexterm"></a>. You can subscribe to the mailing list at <a class="ulink" href="http://lists.osgeo.org/mailman/listinfo/openlayers-users" target="_blank">http://lists.osgeo.org/mailman/listinfo/openlayers-users</a>.</p><p>There are various ways to browse the content, and I prefer to use Nabble<a id="id84" class="indexterm"></a>. You can view the lists at <a class="ulink" href="http://osgeo-org.1803224.n2.nabble.com/OpenLayers-f1822462.html" target="_blank">http://osgeo-org.1803224.n2.nabble.com/OpenLayers-f1822462.html</a>.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="tip03"></a>Tip</h3><p>Please do a thorough search before posting questions, as it is likely that a question similar to yours has already been asked and solved. If you have a question about using OpenLayers, please use the User list. Please do not post questions to the Dev list, unless it has to do strictly with development of the OpenLayers library itself.</p></div><p>When posting a question, please be as thorough as possible, stating your problem, what you have done, and the relevant source code (e.g. "I have a problem with using a WMS layer. I have tried this and that, and here is what my source code looks like..."). A good guideline for asking questions in a way that will best elicit a response can be found at <a class="ulink" href="http://www.catb.org/~esr/faqs/smart-questions.html" target="_blank">http://www.catb.org/~esr/faqs/smart-questions.html</a>.</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="ch01lvl2sec29"></a>IRC</h3></div></div></div><a id="id85" class="indexterm"></a><a id="id86" class="indexterm"></a><p><span class="strong"><strong>Internet Relay Chat (IRC)</strong></span> is another great place to go if you have questions about OpenLayers. IRC is used for group communication; a big chat room, essentially. If you have exhausted Google and the mailing list, IRC provides you with real time with other people interested in OpenLayers.</p><p>Generally, the people who hang out in the OpenLayers chat room are very friendly, but please try to find an answer before asking in IRC. The server is <code class="literal">irc.freenode.net</code> and the chat room is <code class="literal">#openlayers</code>. You can download an IRC client online; a good Windows one is mIRC (<a class="ulink" href="http://mirc.com" target="_blank">http://mirc.com</a>). More information about how to use IRC can be found at <a class="ulink" href="http://www.mirc.com/install.html" target="_blank">http://www.mirc.com/install.html</a>.</p></div></div>
+ </div>
+<a name="book-section-13">&nbsp;</a>
+<div id="book-section-13">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec23"></a>OpenLayers source code repository</h2></div></div><hr></div><a id="id87" class="indexterm"></a><p>Traditionally, OpenLayers has used SVN as its revision management system. At the time of writing, however, the source code repository location is hosted at GitHub<a id="id88" class="indexterm"></a>. You can access the entire code repository at <a class="ulink" href="http://github.com/openlayers/openlayers" target="_blank">http://github.com/openlayers/openlayers</a>.</p><p>Feel free to download a copy and play around with it yourself. There is a process to actually get your code permanently added to the official source code base, but it cannot hurt to download a copy of the code base and look around it yourself to figure out how it's really working!</p></div>
+</div>
+<a name="book-section-14">&nbsp;</a>
+<div id="book-section-14">
+<div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ch01lvl1sec24"></a>Summary</h2></div></div><hr></div><p>In this chapter we were introduced to OpenLayers and learned a bit about it.</p><p>We saw what Web Map Applications are and how they work. After that, we created our first map with OpenLayers, then analyzed how the code works. Then we covered a fundamental concept, Object Oriented Programming, which we'll need to know about while really working with OpenLayers. Lastly, resources for help and information outside this book were provided.</p><p>Now that we have a basic handle on OpenLayers, we'll jump straight into debugging OpenLayers. By doing so, we'll cover more thoroughly many of the concepts that we've discussed, such as how OpenLayers requests and receives map images, and how it puts them together.</p></div>
+</div>
+  <div class="product__more">
+<a class="button" href="https://subscription.packtpub.com/book/web-development/9781849514125/1/ch01lvl1sec11/what-is-openlayers" id="continue-reading" onclick="return pp.continueReading();">
+Read more
+</a>
+<a href="/checkout/subscription/packt-monthly-five-month-offer" class="button" id="get-subscription" style="display: none;">
+Unlock the full Packt library for just $5/m
+</a>
+</div>
+</div>
+</article>
+<section class="product__author container" id="authors">
+<div class="container-full">
+<h3>About the Author</h3>
+<ul class="accordion" id="collapse1">
+<li class="accordion__item">
+<a href="#" onclick="return false;" data-toggle="collapse" data-target="#author-collapse0" aria-expanded="true" aria-controls="collapse0">
+<h5 class="accordion__title">
+Erik Hazzard
+</h5>
+</a>
+<div class="accordion__content collapse show" id="author-collapse0" data-parent="#collapse1">
+<p><p>Erik Hazzard is the author of OpenLayers 2.10 Beginner's Guide, Packt Publishing. He has worked as the lead developer for a GIS-based company, has done contracting work with the design studio, Stamen, and has co-founded two start-ups. Erik is passionate about mapping, game development, and data visualization. In his free time, he enjoys writing and teaching, and can be found at http://vasir.net.</p></p>
+<span class="browse-publications">Browse publications by this author</span>
+</div>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<section class="product__author container upsell">
+<div class="upsell-card">
+<div class="upsell-card__inner">
+<div class="upsell-card__header">
+<div class="upsell-card__image">
+<img src="https://static.packt-cdn.com/products/9781849514125/cover/smaller" alt="Book Title" />
+</div>
+<div class="upsell-card__info">
+<div class="upsell-card__text">
+<div class="upsell-card__text-title">
+Access this book, plus 7,500 other titles for just <span class="orange">$5/m</span>
+<span class="countdown" style="display: none">
+Expire: <span class="countdown__timer orange"></span>
+</span>
+</div>
+<div class="hidden-xxs hidden-xs">
+Get all the quality content you’ll ever need to stay ahead with a Packt subscription – access over 5,500 online books and videos on everything in tech
+</div>
+</div>
+<a href="https://subscription.packtpub.com/checkout/packt-subscription-monthly-launch-offer?freeTrial" class="button" target="_blank" data-tippy-position="right">
+<span>Access now</span>
+</a>
+<button type="button" class="close" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="primary-footer margin">
+<div class="container">
+<div class="footer-group row">
+<div class="help-support primary-footer-text col-sm-4">
+<p class="footer-heading">Useful Links</p>
+<ul>
+<li class="footer-text">
+<a href="https://www.packtpub.com/about" target="_self">About us</a>
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/authors" target="_self">Our Authors</a>
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/about/press" target="_self">Press</a>
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/about/careers" target="_self">Careers</a>
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/about/privacy-policy" target="_self">Privacy Policy</a
+                        >
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/about/cookie-policy" target="_self">View our Cookie Policy</a
+                        >
+</li>
+</ul>
+</div>
+<div class="useful-links primary-footer-text col-sm-4">
+<p class="footer-heading">Help & Support</p>
+<ul>
+<li class="footer-text">
+<a href="https://www.packtpub.com/support" target="_self">Support Home</a>
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/support/faq" target="_self">Frequently Asked Questions</a
+                        >
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/support/purchases" target="_self">Orders & Purchases</a
+                        >
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/support/code-downloads" target="_self">Code Download & Errata</a
+                        >
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/support/errata" target="_self">Submit Errata</a
+                        >
+</li>
+<li class="footer-text">
+<a href="https://www.packtpub.com/contact" target="_self">Contact Us</a>
+</li>
+</ul>
+</div>
+<div class="sign-up-social primary-footer-text col-sm-4">
+<div class="hidden-xxs">
+<p class="footer-heading">Social</p>
+<ul class="social-links">
+<li>
+<a href="https://www.facebook.com/PacktPub/" target="_blank">
+<i class="fa fa-facebook-official" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/PacktPub" target="_blank">
+<i class="fa fa-twitter" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/company/packt-publishing/" target="_blank">
+<i class="fa fa-linkedin" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://www.youtube.com/user/packt1000/featured" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i>
+ </a>
+</li>
+<li>
+<a href="https://github.com/PacktPublishing" target="_blank">
+<i class="fa fa-github" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://hub.packtpub.com/feed/" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="sign-up-show primary-footer-text">
+<p>
+Sign up to our emails for regular updates, bespoke offers, exclusive
+discounts and great free content.
+</p>
+<div class="newsletter-signup">
+<input type="email" class="form-control" placeholder="Enter your email address" aria-label="Email" required [(ngModel)]="email" #ctrl="ngModel" />
+<button class="btn" type="submit" (click)="subscribeToUpdates()">
+Submit
+</button>
+</div>
+</div>
+<div class="app-icons">
+<a href="https://apps.apple.com/app/packt/id1376577776?ls=1" target="_blank"><img src="/images/apple-app-store.png" class="app-icon-badge" alt="Download on the App Store" /></a>
+<a href="https://play.google.com/store/apps/details?id=com.packtpub.reader" target="_blank"><img src="/images/google-play-app.png" class="app-icon-badge" alt="Get it on Google Play" /></a>
+</div>
+</div>
+<div class="social-mobile hidden-laptop primary-footer-text">
+<p class="footer-heading">Social</p>
+<ul class="social-links">
+<li>
+<a href="https://www.facebook.com/PacktPub/" target="_blank">
+<i class="fa fa-facebook-official" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/PacktPub" target="_blank">
+<i class="fa fa-twitter" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/company/packt-publishing/" target="_blank">
+<i class="fa fa-linkedin" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://www.youtube.com/user/packt1000/featured" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://github.com/PacktPublishing" target="_blank">
+<i class="fa fa-github" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a href="https://hub.packtpub.com/feed/" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="margin footer-copyright">
+<p>
+The word 'Packt' and the Packt logo are registered trademarks belonging to
+Packt Publishing Limited. All rights reserved
+</p>
+</div>
+</div>
+</footer>
+</div>
+<script src="/js/product.js?id=e963a7aa18c2925f3217"></script>
+<script>
+            let pp = new window.TOC(3, 15, false, 'books');
+            $('.book-content ul li:has(ul)').addClass('has_sub');
+        </script>
+<script>
+        const timer = new window.CutdowmTimer("2020-12-01 00:00:00");
+    </script>
+</body>
+</html>
